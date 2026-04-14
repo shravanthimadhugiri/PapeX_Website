@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PapeX: Never Lose a Receipt Again</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&family=JetBrains+Mono:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="papex-shared.css">
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="nav-inner">
+    <a href="papex-v2.html" class="nav-logo" aria-label="PapeX">
+      <img src="PapeX/PapeX%20Logos/primary%20orange%20dark.svg" alt="PapeX" width="180" height="34" />
+    </a>
+
+    <div class="nav-links">
+      <a href="papex-v2.html#how">How It Works</a>
+      <a href="papex-v2.html#for">Who It's For</a>
+      <a href="pos-calculator.html">POS Calculator</a>
+      <a href="papex-v2.html#competition">vs. Others</a>
+      <a href="papex-v2.html#audiences">For You</a>
+      <a href="about.html">About Us</a>
+      <a href="papex-v2.html#cta">Get Started</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="#" class="btn btn-ghost btn-sm">Log In</a>
+      <a href="#" class="btn btn-primary btn-sm">
+        <svg style="width:14px;height:14px;fill:white" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download App
+      </a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <span class="tag tag-green"><span class="live-dot"></span>V1 Live on App Store</span>
+      <span class="tag tag-orange">Seed Round Open</span>
+    </div>
+
+    <h1>Stop losing money<br>to <em>missing&nbsp;receipts.</em></h1>
+    <p class="hero-desc">PapeX automatically captures and organizes every transaction after purchase, so nothing gets lost, and every deduction is accounted&nbsp;for.</p>
+
+    <div class="hero-ctas">
+      <a href="#" class="btn-app-store">
+        <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="app-dl-text">
+          <span class="app-dl-small">Download on the</span>
+          <span class="app-dl-big">App Store</span>
+        </div>
+      </a>
+      <div class="app-dl-btn app-dl-soon">
+        <svg style="fill:var(--text-muted)" viewBox="0 0 24 24"><path d="M3.18 23.65c.3.17.64.22.97.13l13.2-7.62-2.83-2.83-11.34 10.32zm-1.43-20.3c-.17.28-.26.6-.26.94v19.42c0 .34.09.66.26.94l.1.1 10.88-10.88v-.26L1.75 3.25l-.1.1zM21.5 9.87l-2.83-1.63-3.18 3.18 3.18 3.18 2.85-1.65c.81-.47.81-1.22 0-1.68zM4.15.35L17.35 7.97 14.52 10.8 3.18.48c.31-.09.67-.04.97.13v-.26z"/></svg>
+        <div class="app-dl-text" style="color:var(--text-muted)">
+          <span class="app-dl-small">Coming soon</span>
+          <span class="app-dl-big">Google Play</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-proof">
+      <div class="hero-proof-avatars">
+        <div class="hpa">JR</div>
+        <div class="hpa">MC</div>
+        <div class="hpa">AL</div>
+        <div class="hpa">TS</div>
+      </div>
+      Hundreds of early users are already organizing receipts.
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img class="hero-product-shot" src="papex-hero-app.png" alt="PapeX app showing receipts and spending on a phone" width="840" height="1680" loading="eager" decoding="async" />
+  </div>
+</section>
+
+<!-- audience cards -->
+<div class="audience-row">
+  <a href="#audiences" class="aud-card reveal">
+    <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18v-4"/></svg></div>
+    <div class="aud-title">App Users</div>
+    <div class="aud-desc">Download and organize all your receipts automatically, for free, forever.</div>
+    <div class="aud-link">Download the app →</div>
+  </a>
+  <a href="#audiences" class="aud-card reveal reveal-d1">
+    <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div>
+    <div class="aud-title">POS Vendors</div>
+    <div class="aud-desc">Integrate via REST API. New revenue stream, no hardware changes.</div>
+    <div class="aud-link">Explore partnerships →</div>
+  </a>
+  <a href="#audiences" class="aud-card reveal reveal-d2">
+    <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+    <div class="aud-title">Investors</div>
+    <div class="aud-desc">Functional product market. Seed round open. Working product with real users.</div>
+    <div class="aud-link">See the opportunity →</div>
+  </a>
+</div>
+
+<!-- stats bar -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <span class="stat-num" data-target="312" data-prefix="$" data-suffix="M">$0M</span>
+      <span class="stat-lbl">Annual U.S. spend on receipt paper</span>
+    </div>
+    <div class="stat-item reveal reveal-d1">
+      <span class="stat-num" data-target="148" data-suffix="B">0B</span>
+      <span class="stat-lbl">Paper receipts printed yearly</span>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <span class="stat-num" data-target="302" data-suffix="M lbs">0M lbs</span>
+      <span class="stat-lbl">Annual paper waste from receipts</span>
+    </div>
+    <div class="stat-item reveal reveal-d3">
+      <span class="stat-num">5,000+</span>
+      <span class="stat-lbl">Receipts are ancient; workflows barely changed</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ HOW IT WORKS ══ -->
+<section id="how" class="sec-alt">
+  <div class="how-head reveal">
+    <span class="section-label">How It Works</span>
+    <h2>Start getting value today.</h2>
+    <p style="max-width:52ch">Active Beta Testing in progress, with full POS automation rolling out as soon as integrations go live.</p>
+  </div>
+
+  <div class="how-grid reveal">
+    <div class="how-panel">
+      <div class="how-panel-header">
+        <span class="tag tag-green text-xs"><span class="live-dot"></span>Available Now</span>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="hs-icon icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div class="hs-text">
+            <h5>Forward Email Receipts</h5>
+            <p>Claim your unique PapeX email upon signup. Forward or send any receipt to that email and sit back while it appears instantly in your app.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="hs-icon icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></div>
+          <div class="hs-text">
+            <h5>Scan Paper Receipts</h5>
+            <p>Photograph or upload any paper receipt into the app. PapeX extracts the data, categorizes it, and files it automatically.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="hs-icon icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg></div>
+          <div class="hs-text">
+            <h5>Share Your Expenses in One Click</h5>
+            <p>Export all your receipts to your tax or expense management system. Never spend hours on manual entry again.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-panel">
+      <div class="how-panel-header">
+        <span class="tag tag-orange text-xs">◑ Full Launch</span>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="hs-icon icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div>
+          <div class="hs-text">
+            <h5>Pay as Normal</h5>
+            <p>Pay however you want, whether card, Apple Pay, or Google Pay, PapeX works seamlessly at any connected store.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="hs-icon icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
+          <div class="hs-text">
+            <h5>Instant Receipt Capture</h5>
+            <p>The PapeX plug-in detects the transaction, captures the data, and sends it to your PapeX without having to lift a finger.</p>
+          </div>
+        </div>
+        <div class="how-step">
+          <div class="hs-icon icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></div>
+          <div class="hs-text">
+            <h5>Never Forget a Receipt Again</h5>
+            <p>Every future purchase at every PapeX-connected store just works. Receipt collection becomes invisible, and permanent.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ STORY ══ -->
+<section id="story">
+  <div class="story-card-wrap">
+  <div class="inner">
+    <div class="reveal story-text-col">
+      <span class="section-label">The Problem</span>
+      <h2>You're leaving money on the table. Every year.</h2>
+      <p>Tax season hits and you're piecing together a year of expenses from blurry photos, stray emails, and paper crumpled in the car. None of it is tagged, categorized, or export-ready.</p>
+      <p><strong style="color:var(--text-primary)">It&rsquo;s not just messy, it&rsquo;s deductions you can&rsquo;t prove and money you leave on the table.</strong></p>
+      <a href="#" class="btn btn-primary">Download PapeX for Free.</a>
+    </div>
+
+    <div class="reveal reveal-d1">
+      <div class="story-timeline-v2">
+        <div class="st-vt-item">
+          <span class="st-vt-dot" aria-hidden="true"></span>
+          <div class="st-vt-body">
+            <h4 class="st-vt-title">At checkout &mdash; &ldquo;I&rsquo;ll just take a photo&rdquo;</h4>
+            <p>Snap a receipt with your camera. It disappears into a gallery of 4,000 photos. You feel like you&rsquo;ve handled it.</p>
+          </div>
+        </div>
+        <div class="st-vt-item">
+          <span class="st-vt-dot" aria-hidden="true"></span>
+          <div class="st-vt-body">
+            <h4 class="st-vt-title">At the end of the month &mdash; &ldquo;I&rsquo;ll deal with it later&rdquo;</h4>
+            <p>You forward a few email receipts to yourself. The paper ones are in your pocket, your car, or maybe the trash. The folder system you meant to set up never happened.</p>
+          </div>
+        </div>
+        <div class="st-vt-item">
+          <span class="st-vt-dot" aria-hidden="true"></span>
+          <div class="st-vt-body">
+            <h4 class="st-vt-title">Tax season &mdash; &ldquo;Where is everything?&rdquo;</h4>
+            <p>You spend hours reconstructing what you can. Your accountant fills in the blanks. You miss deductions you can&rsquo;t prove. That&rsquo;s real money&hellip; gone!</p>
+          </div>
+        </div>
+        <div class="st-vt-item st-vt-highlight">
+          <span class="st-vt-dot" aria-hidden="true"></span>
+          <div class="st-vt-body">
+            <h4 class="st-vt-title">With PapeX &mdash; it just works</h4>
+            <p>Every receipt, email, paper, or automatic is captured, tagged, and organized the moment it&rsquo;s created. One click exports everything to your accountant. Nothing gets lost.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- ══ WHO IT'S BUILT FOR ══ -->
+<section id="for" class="sec-alt">
+  <div class="for-head reveal">
+    <span class="section-label">Who It's Built For</span>
+    <h2>Built first for people who need their&nbsp;receipts.</h2>
+    <p>If receipts are a legal obligation, and not just a convenience, PapeX is made for&nbsp;you.</p>
+  </div>
+
+  <div class="for-grid">
+    <div class="for-card reveal" data-n="01">
+      <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18v-4"/></svg></div>
+      <div class="for-card-head">
+        <h4>1099 Contractors</h4>
+        <span class="for-pill">Self-employed</span>
+      </div>
+      <div class="for-card-body">
+        <p>Every expense is a potential deduction. Stop leaving money on the table because of a lost receipt.</p>
+        <div class="for-values">
+          <div class="for-value">Get reimbursed with less effort</div>
+          <div class="for-value">Never forget a receipt</div>
+          <div class="for-value">Share expenses in one click</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="for-card reveal reveal-d1" data-n="02">
+      <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></div>
+      <div class="for-card-head">
+        <h4>SMB Owners</h4>
+        <span class="for-pill">Small Business</span>
+      </div>
+      <div class="for-card-body">
+        <p>Every employee's expense, automatically organized. No more chasing receipts.</p>
+        <div class="for-values">
+          <div class="for-value">Multi-user expense tracking</div>
+          <div class="for-value">Single-click export to expense and accounting platforms</div>
+          <div class="for-value">Spend 50% less time monthly on accounting</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="for-card reveal reveal-d2" data-n="03">
+      <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg></div>
+      <div class="for-card-head">
+        <h4>Corporate Cardholders</h4>
+        <span class="for-pill">Enterprise</span>
+      </div>
+      <div class="for-card-body">
+        <p>Submit your expenses without the Sunday night receipt hunt.</p>
+        <div class="for-values">
+          <div class="for-value">One-click receipt submission</div>
+          <div class="for-value">Automatic categorization</div>
+          <div class="for-value">No more manual entries</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="for-card reveal reveal-d3" data-n="04">
+      <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="M8 7h8"/><path d="M8 11h8"/></svg></div>
+      <div class="for-card-head">
+        <h4>Bookkeepers</h4>
+        <span class="for-pill">Accounting</span>
+      </div>
+      <div class="for-card-body">
+        <p>Your clients' receipts, collected and exportable. No chasing, no scanning, no spreadsheet hell.</p>
+        <div class="for-values">
+          <div class="for-value">Clean client data</div>
+          <div class="for-value">Bulk export capabilities</div>
+          <div class="for-value">Stack integration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ COMPETITION ══ -->
+<section id="competition">
+  <div class="comp-head reveal">
+    <div>
+      <span class="section-label">Competitive Landscape</span>
+      <h2>The competition has half an answer.</h2>
+    </div>
+    <div class="comp-head-right">
+      <p>Every existing solution stops the moment a receipt gets printed (sent). PapeX reconstructs the full post-payment ecosystem, from payment to returns, expense tracking, and tax management.</p>
+    </div>
+  </div>
+
+  <div class="comp-table-wrap reveal">
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Auto Delivery</th>
+          <th>Consumer App</th>
+          <th>Financial Integration</th>
+          <th>Multi-POS</th>
+          <th>Streamlined Experience</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-papex">
+          <td>PapeX ✦</td>
+          <td><span class="chk">✓ Fully automatic</span></td>
+          <td><span class="chk">✓</span></td>
+          <td><span class="chk">✓</span></td>
+          <td><span class="chk">✓</span></td>
+          <td><span class="chk">✓</span></td>
+        </tr>
+        <tr>
+          <td>ReceiptHero</td>
+          <td><span class="partial">◑ Partial</span></td>
+          <td><span class="chk">✓</span></td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="partial">◑ Limited</span></td>
+          <td><span class="xmk">✗</span></td>
+        </tr>
+        <tr>
+          <td>SAP Concur</td>
+          <td><span class="xmk">✗ Manual scan</span></td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="chk">✓</span></td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="xmk">✗</span></td>
+        </tr>
+        <tr>
+          <td>Fetch Rewards</td>
+          <td><span class="xmk">✗ Manual scan</span></td>
+          <td><span class="chk">✓</span></td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="xmk">✗</span></td>
+        </tr>
+        <tr>
+          <td>Email / SMS</td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="xmk">✗</span></td>
+          <td><span class="xmk">✗</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- ══ INFRASTRUCTURE ══ -->
+<section id="infra" class="sec-alt">
+  <div class="infra-head reveal">
+    <span class="section-label">Infrastructure</span>
+    <h2>Not just an app. The infrastructure layer.</h2>
+  </div>
+
+  <div class="infra-grid">
+    <div class="infra-card reveal">
+      <div class="ic-num">01</div>
+      <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg></div>
+      <div class="ic-title">The Plugin</div>
+      <div class="ic-text">Lives inside the POS, listens for settled sales, and normalizes receipt data before it ever hits the consumer. No extra taps at checkout: the plug-in is the always-on capture path merchants can trust.</div>
+    </div>
+    <div class="infra-card reveal reveal-d1">
+      <div class="ic-num">02</div>
+      <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+      <div class="ic-title">The App</div>
+      <div class="ic-text">The client where people actually review receipts. It is connected to your financial and tax management tools.</div>
+    </div>
+    <div class="infra-card reveal reveal-d2">
+      <div class="ic-num">03</div>
+      <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></div>
+      <div class="ic-title">The Data Layer</div>
+      <div class="ic-text">Privacy-safe and in real-time, turning receipt into a powerful intelligence asset.</div>
+    </div>
+  </div>
+
+  <div class="roadmap reveal">
+    <div class="rm-label">Product Roadmap</div>
+    <div class="rm-track">
+      <div class="rm-node"><div class="rm-dot active" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/></svg></div><div class="rm-node-text active">Receipts</div></div>
+      <div class="rm-line active"></div>
+      <div class="rm-node"><div class="rm-dot next" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div><div class="rm-node-text">Coupons</div></div>
+      <div class="rm-line"></div>
+      <div class="rm-node"><div class="rm-dot next" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg></div><div class="rm-node-text">Loyalty</div></div>
+      <div class="rm-line"></div>
+      <div class="rm-node"><div class="rm-dot next" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></div><div class="rm-node-text">Warranties</div></div>
+      <div class="rm-line"></div>
+      <div class="rm-node"><div class="rm-dot next" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg></div><div class="rm-node-text">End-to-end Ecosystem</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ AUDIENCE SECTIONS (uniform tabbed) ══ -->
+<section id="audiences" class="sec-alt">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px">
+    <div class="audiences-title reveal">
+      <span class="section-label">For You</span>
+      <h2>Everyone wins with PapeX.</h2>
+    </div>
+
+    <div class="aud-tabs">
+      <button class="aud-tab active" onclick="switchTab('consumers')">App Users</button>
+      <button class="aud-tab" onclick="switchTab('merchants')">Merchants</button>
+      <button class="aud-tab" onclick="switchTab('vendors')">POS Vendors</button>
+      <button class="aud-tab" onclick="switchTab('investors')">Investors</button>
+    </div>
+
+    <!-- CONSUMERS -->
+    <div class="aud-panel active" id="tab-consumers">
+      <div class="ap-content">
+        <h3>Your receipts. Organized forever. For free.</h3>
+        <p>PapeX is free forever for consumers. Automatically collect, organize, and access every receipt without lifting a finger. Only pay to export.</p>
+        <div class="ap-benefits">
+          <div class="ap-benefit reveal">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg></div>
+            <div class="ap-benefit-text"><h5>One app for every store</h5><p>Receipts anywhere, automatically….</p></div>
+          </div>
+          <div class="ap-benefit reveal reveal-d1">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
+            <div class="ap-benefit-text"><h5>Tax season, solved!</h5><p>AI tags every receipt as deductible or personal. Export to your tax software in one click.</p></div>
+          </div>
+          <div class="ap-benefit reveal reveal-d2">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+            <div class="ap-benefit-text"><h5>Privacy-first, always</h5><p>End-to-end encryption combined with one-way tokenization to ensure your data remains secure.</p></div>
+          </div>
+        </div>
+        <div class="ap-ctas">
+          <a href="#" class="btn btn-primary">Download on App Store</a>
+          <a href="#cta" class="btn btn-ghost btn-sm">Android Waitlist</a>
+        </div>
+        <p class="ap-note">Free for consumers. Always.</p>
+      </div>
+      <div class="ap-visual">
+        <div class="ap-stat-grid">
+          <div class="ap-stat"><div class="ap-stat-label">Tax deductibles found</div><div class="ap-stat-val green">$1,247</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">Time to export</div><div class="ap-stat-val orange">1-click</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">Receipts saved</div><div class="ap-stat-val">47</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">Hours saved</div><div class="ap-stat-val">12+</div></div>
+        </div>
+        <div class="ap-feature-list">
+          <div class="ap-feature reveal"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>Forward email receipts</div><span class="af-check">✓</span></div>
+          <div class="ap-feature reveal reveal-d1"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>Scan paper receipts</div><span class="af-check">✓</span></div>
+          <div class="ap-feature reveal reveal-d2"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/></svg></span>AI expense categorization</div><span class="af-check">✓</span></div>
+          <div class="ap-feature reveal reveal-d3"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg></span>One-click export</div><span class="af-check">✓</span></div>
+          <div class="ap-feature reveal reveal-d4"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span>Auto-sync (with POS)</div><span style="color:var(--orange);font-size:12px;font-family:var(--font-data)">Soon</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MERCHANTS -->
+    <div class="aud-panel" id="tab-merchants">
+      <div class="ap-content">
+        <h3>Cut costs. Speed up checkout. Keep customers happy.</h3>
+        <p>PapeX replaces paper receipt costs with a cheaper digital alternative, automatically. No new hardware, no staff retraining.</p>
+        <div class="ap-benefits">
+          <div class="ap-benefit reveal">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></div>
+            <div class="ap-benefit-text"><h5>Reduce receipt costs by 50% to 80%</h5><p>Pay $0.005 to $0.01 per digital receipt vs. $0.015 to $0.05 for paper. Same legal compliance, lower cost.</p></div>
+          </div>
+          <div class="ap-benefit reveal reveal-d1">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></div>
+            <div class="ap-benefit-text"><h5>Faster checkout times</h5><p>No printing, no waiting. Digital delivery is instant, so lines move faster and customers stay happier.</p></div>
+          </div>
+          <div class="ap-benefit reveal reveal-d2">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg></div>
+            <div class="ap-benefit-text"><h5>Smarter coupon delivery</h5><p>Issue digital coupons with real-time tracking. Customers get 48-hour expiry reminders that lift redemption.</p></div>
+          </div>
+        </div>
+        <div class="ap-ctas">
+          <a href="#cta" class="btn btn-primary">Partner With Us</a>
+        </div>
+      </div>
+      <div class="ap-visual">
+        <div class="ap-stat-grid">
+          <div class="ap-stat"><div class="ap-stat-label">Paper cost/receipt</div><div class="ap-stat-val" style="color:#ef4444">$0.05</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">PapeX cost/receipt</div><div class="ap-stat-val green">$0.01</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">Savings</div><div class="ap-stat-val orange">80%</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">Setup required</div><div class="ap-stat-val">Zero</div></div>
+        </div>
+        <div class="ap-feature-list">
+          <div class="ap-feature reveal"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></span>Legal compliance maintained</div><span class="af-check">✓</span></div>
+          <div class="ap-feature reveal reveal-d1"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect width="8" height="8" x="8" y="13" rx="2"/></svg></span>Eliminate paper costs</div><span class="af-check">✓</span></div>
+          <div class="ap-feature reveal reveal-d2"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg></span>Customer purchase insights</div><span class="af-check">✓</span></div>
+          <div class="ap-feature reveal reveal-d3"><div class="af-left"><span class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></svg></span>Digital coupon delivery</div><span class="af-check">✓</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POS VENDORS -->
+    <div class="aud-panel" id="tab-vendors">
+      <div class="ap-content">
+        <h3>Make your platform more valuable, overnight.</h3>
+        <p>REST API integration. No hardware changes. A new revenue stream from day one. The first POS vendors to integrate PapeX will own the early-mover advantage.</p>
+        <div class="ap-benefits">
+          <div class="ap-benefit reveal">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></div>
+            <div class="ap-benefit-text"><h5>New revenue stream</h5><p>Earn a percentage of every pay-per-receipt transaction processed through your platform. Scales with merchant volume.</p></div>
+          </div>
+          <div class="ap-benefit reveal reveal-d1">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg></div>
+            <div class="ap-benefit-text"><h5>Zero hardware changes</h5><p>Pure REST API software integration. PapeX's team handles the technical lift with minimal burden on your engineers.</p></div>
+          </div>
+          <div class="ap-benefit reveal reveal-d2">
+            <div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"/><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"/><path d="M18 9h1.5a1 1 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0c0-6-6-6-6-12a6 6 0 0 0-6 6"/></svg></div>
+            <div class="ap-benefit-text"><h5>Be the platform that solved receipts</h5><p>Give merchants a premium feature that saves them money. Sticky merchants stay on your platform longer.</p></div>
+          </div>
+        </div>
+        <div class="ap-ctas">
+          <a href="#cta" class="btn btn-primary">Let's Talk Integration</a>
+        </div>
+      </div>
+      <div class="ap-visual">
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:12px">
+          <div style="font-size:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px">Integration Status</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:6px 12px;border-radius:4px;background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.25);color:var(--green-live)"><span class="live-dot"></span>Clover (Live)</span>
+            <span style="font-size:13px;font-weight:500;padding:6px 12px;border-radius:4px;background:var(--orange-dim);border:1px solid var(--orange-border);color:var(--orange)">Square (In Progress)</span>
+            <span style="font-size:13px;font-weight:500;padding:6px 12px;border-radius:4px;background:var(--orange-dim);border:1px solid var(--orange-border);color:var(--orange)">Toast (In Progress)</span>
+            <span style="font-size:13px;font-weight:500;padding:6px 12px;border-radius:4px;background:var(--bg-surface);border:1px solid var(--border);color:var(--text-muted)">Lightspeed</span>
+            <span style="font-size:13px;font-weight:500;padding:6px 12px;border-radius:4px;background:var(--bg-surface);border:1px solid var(--border);color:var(--text-muted)">Verifone</span>
+          </div>
+        </div>
+        <div class="ap-stat-grid">
+          <div class="ap-stat"><div class="ap-stat-label">Paper cost to merchant</div><div class="ap-stat-val" style="font-size:16px">$0.05/ea</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">PapeX cost to merchant</div><div class="ap-stat-val green" style="font-size:16px">$0.01/ea</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVESTORS -->
+    <div class="aud-panel" id="tab-investors">
+      <div class="ap-content">
+        <h3>A $5.6B market nobody has cracked yet.</h3>
+        <p>PapeX is raising a $3.1M seed round. Working product. Real users. No dominant competitor. A market that processes trillions in transactions and still prints the receipt on thermal paper.</p>
+        <div class="tam-list">
+          <div class="tam-row">
+            <div class="tr-top"><span class="tr-name">Pay-per-receipt (receipts & coupons)</span><span class="tr-amt">$1.48B</span></div>
+            <div class="tr-bar"><div class="tr-fill" style="width:26%"></div></div>
+          </div>
+          <div class="tam-row">
+            <div class="tr-top"><span class="tr-name">B2B subscriptions (expense management)</span><span class="tr-amt">$1.16B</span></div>
+            <div class="tr-bar"><div class="tr-fill" style="width:20%"></div></div>
+          </div>
+          <div class="tam-row">
+            <div class="tr-top"><span class="tr-name">Anonymized data monetization</span><span class="tr-amt">$3.00B</span></div>
+            <div class="tr-bar"><div class="tr-fill" style="width:53%"></div></div>
+          </div>
+          <div class="tam-row total">
+            <div class="tr-top"><span class="tr-name" style="font-weight:600">Total Addressable Market</span><span class="tr-amt" style="font-size:22px;color:var(--orange)">$5.64B+</span></div>
+          </div>
+        </div>
+        <div class="ap-ctas" style="margin-top:20px">
+          <a href="#cta" class="btn btn-primary">Download One Pager</a>
+        </div>
+      </div>
+      <div class="ap-visual">
+        <div class="ap-stat-grid">
+          <div class="ap-stat"><div class="ap-stat-label">Year 1 Revenue</div><div class="ap-stat-val" style="font-size:20px">$570K</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">Break-Even</div><div class="ap-stat-val" style="font-size:20px">Q3 Yr3</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">Year 5 Revenue</div><div class="ap-stat-val orange" style="font-size:20px">~$20M</div></div>
+          <div class="ap-stat"><div class="ap-stat-label">Gross Margin</div><div class="ap-stat-val green" style="font-size:20px">80%</div></div>
+        </div>
+        <div class="ask-box">
+          <div class="ab-label">Seed Round: Open Now</div>
+          <div class="ab-amount">$3.1M</div>
+          <div class="ab-equity">for 4% equity in PapeX Inc.</div>
+          <div class="ab-returns">
+            <div><div class="abr-val">8.15×</div><div class="abr-label">Projected ROI by Year 5</div></div>
+            <div><div class="abr-val">$25.2M</div><div class="abr-label">Est. return on $3.1M</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CTA / FORMS ══ -->
+<section id="cta">
+  <div class="cta-head reveal">
+    <span class="section-label">Get Started</span>
+    <h2>Be first. Be paperless.</h2>
+    <p style="max-width:52ch">Download the app, start a partnership conversation, or grab the investor&nbsp;one-pager.</p>
+  </div>
+
+  <div class="forms-grid">
+    <div class="form-card reveal">
+      <div class="fc-eyebrow"><div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18v-4"/></svg></div><span class="tag tag-green text-xs"><span class="live-dot"></span>Live Now</span></div>
+      <h3>App Users</h3>
+      <p>Download PapeX and start organizing your receipts today.</p>
+      <div class="form-card-mid">
+        <p style="font-size:12px;color:var(--text-muted);margin:0">Android is coming soon. Join the waitlist:</p>
+        <form onsubmit="handleForm(event,'consumer')">
+          <input type="email" placeholder="Email for Android waitlist">
+          <button type="submit" class="form-submit secondary">Notify Me for Android</button>
+        </form>
+      </div>
+      <a href="#" class="btn btn-primary fc-primary" style="width:100%;justify-content:center">
+        <svg style="width:16px;height:16px;fill:white" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download on App Store
+      </a>
+    </div>
+
+    <div class="form-card reveal reveal-d1">
+      <div class="fc-eyebrow"><div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg></div></div>
+      <h3>POS Vendors</h3>
+      <p>No commitment, just a conversation.</p>
+      <form onsubmit="handleForm(event,'vendor')">
+        <input type="text" placeholder="Your name" required>
+        <input type="text" placeholder="Company / Platform name" required>
+        <input type="email" placeholder="Work email" required>
+        <textarea placeholder="Tell us about your platform..." rows="2"></textarea>
+        <button type="submit" class="form-submit fc-primary">Let's Talk Integration →</button>
+      </form>
+    </div>
+
+    <div class="form-card reveal reveal-d2">
+      <div class="fc-eyebrow"><div class="icon-box" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><span class="tag tag-orange text-xs">Seed Round Open</span></div>
+      <h3>Investors</h3>
+      <p>Request materials or introduce your fund to the founding team.</p>
+      <form onsubmit="handleForm(event,'investor')">
+        <input type="text" placeholder="Your name" required>
+        <input type="text" placeholder="Fund or firm">
+        <input type="email" placeholder="Your email" required>
+        <select>
+          <option value="">Investment range</option>
+          <option>Under $250K</option>
+          <option>$250K to $500K</option>
+          <option>$500K to $1M</option>
+          <option>$1M+</option>
+        </select>
+        <button type="submit" class="form-submit fc-primary" style="background:var(--orange)">Download One Pager →</button>
+      </form>
+    </div>
+  </div>
+
+  <p style="text-align:center;margin-top:32px;font-size:13px;color:var(--text-muted)">
+    Or reach us directly: <a href="mailto:nico@papex.com" style="color:var(--text-secondary);text-decoration:none">nico@papex.com</a> · Based in Dallas,&nbsp;TX
+  </p>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <a href="papex-v2.html" class="footer-logo" aria-label="PapeX">
+      <img src="PapeX/PapeX%20Logos/primary%20orange%20dark.svg" alt="PapeX" width="180" height="34" />
+    </a>
+
+    <div class="footer-links">
+      <a href="papex-v2.html#how">How It Works</a>
+      <a href="papex-v2.html#for">Who It's For</a>
+      <a href="pos-calculator.html">POS Calculator</a>
+      <a href="papex-v2.html#competition">vs. Others</a>
+      <a href="papex-v2.html#audiences">For You</a>
+      <a href="about.html">About Us</a>
+      <a href="papex-v2.html#cta">Get Started</a>
+    </div>
+
+    <div class="footer-legal-wrap">
+      <p class="footer-legal">© 2025 PapeX Inc. · Dallas, TX · Proprietary and confidential.</p>
+      <p class="footer-legal" style="margin-top:4px">Receipts, reimagined.</p>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+// ── Tab switching
+function switchTab(name) {
+  document.querySelectorAll('.aud-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.aud-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── Scroll reveal
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+// ── Counter animation
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.target);
+    if (!target) { cntObs.unobserve(el); return; }
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    let cur = 0; const step = target / 60;
+    const t = setInterval(() => {
+      cur = Math.min(cur + step, target);
+      el.textContent = prefix + Math.floor(cur) + suffix;
+      if (cur >= target) clearInterval(t);
+    }, 16);
+    cntObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => cntObs.observe(el));
+
+// ── Nav shadow
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow = window.scrollY > 20 ? '0 1px 0 rgba(0,0,0,0.06)' : 'none';
+}, { passive: true });
+
+// ── Form submit
+function handleForm(e, type) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type=submit]');
+  const msgs = { consumer: '✓ Added to Android waitlist', vendor: '✓ Message received, talk soon', investor: '✓ Sent, reply within 48hrs' };
+  btn.textContent = msgs[type];
+  btn.style.background = '#1a5c38';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+  e.target.querySelectorAll('input,select,textarea').forEach(el => el.disabled = true);
+}
+
+// ── Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>
