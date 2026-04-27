@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Loyalty Problem No One Talks About | PapeX Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../papex-shared.css">
+<style>
+  /* ── Article shell ─────────────────────────────────────────────── */
+  main.subpage-main.blog-article-shell { min-height: 0; }
+  .blog-article-shell {
+    box-sizing: border-box;
+    padding: 96px var(--pad-x) 0;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .blog-article-back { margin: 0 0 32px; }
+  .blog-article-back a {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; font-weight: 500; color: var(--orange);
+    text-decoration: none;
+  }
+  .blog-article-back a::before { content: "←"; font-size: 16px; line-height: 1; }
+  .blog-article-back a:hover { text-decoration: underline; }
+
+  /* ── Header zone (kicker, title, lede, byline, share) ──────────── */
+  .blog-article-header {
+    max-width: 760px;
+    margin: 0 auto 36px;
+  }
+  .blog-article-kicker {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; margin: 0 0 18px;
+    color: var(--text-muted);
+  }
+  .blog-article-kicker .k-label { color: var(--orange); }
+  .blog-article-kicker .k-dot { color: var(--text-muted); opacity: 0.6; }
+  .blog-article-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4.4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
+    color: var(--text-primary);
+    margin: 0 0 20px;
+    max-width: 30ch;
+  }
+  .blog-article-lede {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin: 0 0 24px;
+    max-width: 60ch;
+    letter-spacing: -0.01em;
+  }
+  .blog-article-byline {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 14px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-light);
+  }
+  .blog-article-byline-meta {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--text-secondary);
+  }
+  .blog-article-mark {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--orange-dim);
+    display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--orange-border);
+  }
+  .blog-article-mark img { width: 18px; height: 18px; display: block; }
+  .blog-article-byline-name {
+    font-size: 14px; font-weight: 600; color: var(--text-primary);
+  }
+  .blog-article-byline-date {
+    font-size: 13px; color: var(--text-muted);
+  }
+  .blog-article-share {
+    margin-left: auto; display: inline-flex; gap: 8px;
+  }
+  .blog-article-share-btn {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--border);
+    background: #fff; color: var(--text-secondary);
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none; cursor: pointer;
+    transition: var(--transition);
+  }
+  .blog-article-share-btn:hover {
+    color: var(--orange); border-color: var(--orange-border);
+    background: var(--orange-dim);
+  }
+  .blog-article-copy--ok {
+    color: var(--green-live) !important;
+    border-color: rgba(22, 163, 74, 0.35) !important;
+    background: rgba(22, 163, 74, 0.08) !important;
+  }
+
+  /* ── Hero image ────────────────────────────────────────────────── */
+  .blog-article-hero {
+    margin: 0 0 40px;
+    border-radius: 17px;
+    overflow: hidden;
+    border: 1px solid #EEDDEE;
+    background: var(--bg-surface);
+  }
+  .blog-article-hero-img {
+    width: 100%; height: auto; display: block;
+    aspect-ratio: 16 / 9; object-fit: cover;
+  }
+
+  /* ── Body prose column ─────────────────────────────────────────── */
+  .blog-article-prose {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .blog-article-prose > *:first-child { margin-top: 0 !important; }
+  .blog-article-prose p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin: 0 0 1.4rem;
+    max-width: 65ch;
+  }
+  .blog-article-prose > p:first-of-type {
+    font-size: 19px;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+  .blog-article-prose h2,
+  .blog-article-prose h3,
+  .blog-article-prose h4,
+  .blog-article-prose h5,
+  .blog-article-prose h6 {
+    font-family: var(--font-display);
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+  .blog-article-prose h2 {
+    font-size: clamp(26px, 2.4vw, 32px);
+    font-weight: 700;
+    margin: 3rem 0 1rem;
+  }
+  .blog-article-prose * + h2 {
+    margin-top: 3rem;
+  }
+  .blog-article-prose > h2:first-child,
+  .blog-article-prose > h3:first-child {
+    margin-top: 0;
+  }
+  .blog-article-prose h3 {
+    font-size: clamp(20px, 2vw, 24px);
+    font-weight: 700;
+    margin: 2.2rem 0 0.8rem;
+  }
+  .blog-article-prose h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 1.8rem 0 0.6rem;
+  }
+  .blog-article-prose ul,
+  .blog-article-prose ol {
+    margin: 0.75rem 0 1.6rem 1.4rem;
+    padding-left: 0.4rem;
+    color: var(--text-secondary);
+  }
+  .blog-article-prose li {
+    margin-bottom: 0.7rem;
+    line-height: 1.75;
+    font-size: 17px;
+  }
+  .blog-article-prose a {
+    color: var(--orange);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s ease;
+  }
+  .blog-article-prose a:hover { border-bottom-color: var(--orange); }
+  .blog-article-prose blockquote {
+    border-left: 3px solid var(--orange);
+    padding: 0.4rem 0 0.4rem 1.2rem;
+    margin: 1.8rem 0;
+    color: var(--text-primary);
+    font-size: 18px;
+    line-height: 1.7;
+  }
+  .blog-article-prose figure { margin: 2rem 0; }
+  .blog-article-prose figcaption {
+    font-size: 13px; color: var(--text-muted); margin-top: 8px;
+    text-align: center;
+  }
+
+  /* Article pages do not run the blog IntersectionObserver; `.reveal` would
+     stay opacity:0 forever. Force related + CTA content visible. */
+  .blog-related .reveal,
+  .blog-end-cta .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  /* ── Related strip ─────────────────────────────────────────────── */
+  .blog-related {
+    box-sizing: border-box;
+    padding: 64px var(--pad-x) 72px;
+  }
+  .blog-related-head { margin-bottom: var(--section-head-to-content); }
+  .blog-related-head h2 { margin: 8px 0 0; }
+  .blog-related-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  @media (min-width: 720px) {
+    .blog-related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .blog-related-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  a.blog-list-card.card {
+    display: flex; flex-direction: column;
+    padding: 0; overflow: hidden;
+    text-decoration: none; color: inherit;
+    height: 100%; min-height: 0;
+  }
+  .blog-list-card-img-wrap {
+    aspect-ratio: 1; overflow: hidden;
+    background: var(--bg-surface);
+    flex-shrink: 0;
+  }
+  .blog-list-card-img-wrap--empty {
+    background: linear-gradient(145deg, var(--orange-dim) 0%, var(--bg-alt) 55%, var(--bg-surface) 100%);
+  }
+  .blog-list-card-img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .blog-list-card-body {
+    padding: 20px 24px 24px;
+    display: flex; flex-direction: column;
+    flex: 1; gap: 10px; min-height: 0;
+  }
+  .blog-list-card-title {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 600; line-height: 1.35;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .blog-list-card-meta {
+    font-size: 13px; font-weight: 500;
+    color: var(--orange); margin-top: auto;
+  }
+
+  /* ── End-of-article CTA band ───────────────────────────────────── */
+  .blog-end-cta {
+    box-sizing: border-box;
+    padding: 48px var(--pad-x) 96px;
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .blog-end-cta-card {
+    text-align: center;
+    max-width: 720px; margin: 0 auto;
+    padding: 56px clamp(28px, 4vw, 56px);
+  }
+  .blog-end-cta-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3vw, 38px);
+    font-weight: 700; letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin: 12px 0 16px;
+  }
+  .blog-end-cta-copy {
+    font-size: 16px; line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 56ch; margin: 0 auto 28px;
+  }
+  .blog-end-cta-actions {
+    display: inline-flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+  }
+
+  /* ── Mobile rhythm ─────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .blog-article-shell { padding: 76px var(--pad-x) 0; }
+    .blog-article-back { margin-bottom: 24px; }
+    .blog-article-header { margin-bottom: 28px; }
+    .blog-article-title { font-size: clamp(28px, 6vw, 36px); margin-bottom: 16px; }
+    .blog-article-lede { font-size: 18px; margin-bottom: 20px; }
+    .blog-article-share { margin-left: 0; width: 100%; padding-top: 4px; }
+    .blog-article-byline { gap: 12px; padding-top: 16px; }
+    .blog-article-hero { margin-bottom: 40px; border-radius: 14px; }
+    .blog-article-prose p { font-size: 16px; line-height: 1.75; margin-bottom: 1.2rem; }
+    .blog-article-prose > p:first-of-type { font-size: 17px; }
+    .blog-article-prose h2 { margin: 2rem 0 0.8rem; }
+    .blog-article-prose * + h2 { margin-top: 2rem; }
+    .blog-article-prose > h2:first-child,
+    .blog-article-prose > h3:first-child { margin-top: 0; }
+    .blog-article-prose h3 { margin: 1.8rem 0 0.6rem; }
+    .blog-article-prose li { font-size: 16px; }
+    .blog-related { padding: 48px var(--pad-x) 56px; }
+    .blog-end-cta { padding: 40px var(--pad-x) 72px; }
+    .blog-end-cta-card { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="../papex-v2.html" class="nav-logo" aria-label="PapeX">
+      <img src="../PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" />
+    </a>
+    <div class="nav-links">
+      <a href="../pos-calculator.html">POS Calculator</a>
+      <a href="#">About Us</a><!-- placeholder: link to about-us.html -->
+      <a href="../papex-v2.html#pricing">Pricing</a>
+      <a href="../blog.html">Blog</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="btn btn-ghost btn-sm">Log In</a>
+      <a href="#" class="btn btn-primary btn-sm">Download App</a>
+    </div>
+  </div>
+</nav>
+
+<main class="subpage-main blog-article-shell">
+  <p class="blog-article-back"><a href="../blog.html">Back to blog</a></p>
+
+  <header class="blog-article-header">
+    <p class="blog-article-kicker">
+      <span class="k-label">Blog</span>
+      <span class="k-dot">·</span>
+      <span>Sep 21, 2025</span>
+      <span class="k-dot">·</span>
+      <span>3 min read</span>
+    </p>
+    <h1 class="blog-article-title">The Loyalty Problem No One Talks About</h1>
+    <p class="blog-article-lede">Loyalty isn’t dead. It’s just been buried under bad UX. We’re here to dig it out, and make it effortless.</p>
+    <div class="blog-article-byline">
+      <div class="blog-article-byline-meta">
+        <span class="blog-article-mark" aria-hidden="true">
+          <img src="../PapeX%20Logos/primary%20orange%20light.svg" alt="" />
+        </span>
+        <span class="blog-article-byline-name">PapeX Team</span>
+        <span class="blog-article-byline-date">Sep 21, 2025</span>
+      </div>
+      <div class="blog-article-share" aria-label="Share this article">
+        <a class="blog-article-share-btn" href="https://twitter.com/intent/tweet?text=The%20Loyalty%20Problem%20No%20One%20Talks%20About&amp;url=https%3A%2F%2Fwww.papex.app%2Fblog%2Fthe-loyalty-problem-no-one-talks-about" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.4 8.46L23 22h-6.79l-5.31-6.94L4.7 22H1.44l7.92-9.05L1 2h6.91l4.79 6.34L18.244 2Zm-1.19 18h1.85L7.04 4H5.07l11.984 16Z"/></svg>
+        </a>
+        <a class="blog-article-share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.papex.app%2Fblog%2Fthe-loyalty-problem-no-one-talks-about" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.22 8.04h4.56V22H.22V8.04ZM8.04 8.04h4.37v1.91h.06c.61-1.16 2.1-2.39 4.32-2.39 4.62 0 5.47 3.04 5.47 7v7.44h-4.56v-6.6c0-1.57-.03-3.59-2.19-3.59-2.19 0-2.52 1.71-2.52 3.48V22H8.04V8.04Z"/></svg>
+        </a>
+        <button class="blog-article-share-btn blog-article-copy" type="button" data-copy-url="https://www.papex.app/blog/the-loyalty-problem-no-one-talks-about" aria-label="Copy link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.06 1.06"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.06-1.06"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <figure class="blog-article-hero"><img src="../blog-covers/the-loyalty-problem-no-one-talks-about.jpg" alt="Featured cover illustration for: The Loyalty Problem No One Talks About" width="1600" height="900" loading="eager" decoding="async" class="blog-article-hero-img" /></figure>
+
+  <article class="blog-article-prose">
+      <p>Most loyalty programs fail not because users don’t care, but because they’re too hard to use.</p>
+      <h3>You’re not tired of loyalty programs. You’re tired of how they work.</h3>
+      <p>We’ve all been there. You buy something, they ask for your phone number, and two days later you get an email with 5% off your next visit, that you’ll probably never use. Or you get a punch card you’ll definitely lose. Or worse, you sign up for a “rewards app” you’ll never open again.</p>
+      <h3>It’s not that loyalty doesn’t matter. It’s that it’s broken.</h3>
+      <p>The problem isn’t the reward, it’s the friction.</p>
+      <p>You shouldn’t have to jump through hoops to get a free coffee or unlock a 10% discount. But right now, loyalty programs are scattered across email inboxes, SMS messages, printouts, and apps you forgot you downloaded. Most of them ask you to do something, create an account, scan a barcode, or remember a password, and that’s where they lose you.</p>
+      <h3>Loyalty fails when it makes the user work.</h3>
+      <p>The average person shops at over a dozen different places a week. You expect them to remember which program belongs to which store? Which card to use? Which login they created two years ago? It’s too much. The result? Billions in unclaimed rewards, and millions of customers who stop caring altogether.</p>
+      <h3>But here’s the twist: people want to be loyal.</h3>
+      <p>We love brands that treat us well. We love free stuff. We love getting something back for what we already do. Loyalty works when it’s easy, when the customer doesn’t have to think about it. The best programs aren’t just rewarding, they’re invisible.</p>
+      <p>The best rewards are the ones you don’t have to look for.</p>
+      <p>They’re just there. They show up when you check out. They apply automatically. They feel like magic, not chores. That’s what keeps people coming back. Not another app. Not another inbox offer. But a seamless experience that rewards you by default.</p>
+      <h3>That’s exactly what PapeX is building.</h3>
+      <p>No punch cards. No sign-up friction. No digging through your emails. With PapeX, your receipts and rewards live in the same place, automatically delivered, always organized, and accessible when you need them. Whether it’s a free drink, a discount, or a loyalty milestone, we put it exactly where it belongs: right in your hand, right when you need it.</p>
+      <h3>And it’s completely effortless.</h3>
+      <p>Once you’re set up, everything runs in the background. You pay like you normally do, and PapeX does the rest, tracking rewards, syncing with your favorite merchants, and helping you actually use the benefits you’ve earned.</p>
+      <p>Loyalty isn’t dead. It’s just been buried under bad UX. We’re here to dig it out, and make it effortless.</p>
+  </article>
+</main>
+
+  <section class="blog-related sec-alt" aria-label="Continue reading">
+    <div class="blog-related-head reveal">
+      <span class="section-label">Continue reading</span>
+      <h2>More from the PapeX blog</h2>
+    </div>
+    <div class="blog-related-grid blog-list-grid">
+      <a class="blog-list-card card reveal" href="the-legal-side-of-receipts-proof-protection-and-why-it-still-matters.html"><div class="blog-list-card-img-wrap"><img src="../blog-covers/the-legal-side-of-receipts-proof-protection-and-why-it-still-matters.jpg" alt="Cover thumbnail: The Legal Side of Receipts: Proof, Protection, and Why It Still Matters" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Legal Side of Receipts: Proof, Protection, and Why It Still Matters</h3><span class="blog-list-card-meta">Read article</span></div></a><a class="blog-list-card card reveal reveal-d1" href="the-invisible-cost-of-every-purchase-what-you-don-t-see-at-checkout.html"><div class="blog-list-card-img-wrap"><img src="../blog-covers/the-invisible-cost-of-every-purchase-what-you-don-t-see-at-checkout.jpg" alt="Cover thumbnail: The Invisible Cost of Every Purchase: What You Don&#x27;t See at Checkout" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Invisible Cost of Every Purchase: What You Don&#x27;t See at Checkout</h3><span class="blog-list-card-meta">Read article</span></div></a><a class="blog-list-card card reveal reveal-d2" href="how-missing-receipts-cost-everyone-money.html"><div class="blog-list-card-img-wrap"><img src="../blog-covers/how-missing-receipts-cost-everyone-money.jpg" alt="Cover thumbnail: How Missing Receipts Cost Everyone Money" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">How Missing Receipts Cost Everyone Money</h3><span class="blog-list-card-meta">Read article</span></div></a>
+    </div>
+  </section>
+
+  <section class="blog-end-cta" aria-label="Get PapeX">
+    <div class="blog-end-cta-card card form-card reveal">
+      <span class="section-label">Get the app</span>
+      <h2 class="blog-end-cta-title">Receipts, reimagined.</h2>
+      <p class="blog-end-cta-copy">PapeX captures, organizes, and stores every receipt automatically, so your records are ready when you need them. Join the people building the future of digital receipts.</p>
+      <div class="blog-end-cta-actions">
+        <a href="../papex-v2.html#download" class="btn btn-primary btn-lg">Download App</a>
+        <a href="../blog.html" class="btn btn-ghost btn-lg">Back to blog</a>
+      </div>
+    </div>
+  </section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-row">
+      <a href="../papex-v2.html" class="footer-logo" aria-label="PapeX">
+        <img src="../PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" />
+      </a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <p class="footer-blurb">Download the PapeX app and keep every receipt in one place. Purchases sync automatically after checkout so you never lose proof for returns, expenses, or tax time.</p>
+        <a href="../papex-v2.html#hero" class="btn-app-store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="app-dl-text">
+            <span class="app-dl-small">Download on the</span>
+            <span class="app-dl-big">App Store</span>
+          </div>
+        </a>
+      </div>
+      <nav class="footer-col footer-col--nav" aria-label="Footer">
+        <a href="../pos-calculator.html">POS Calculator</a>
+        <a href="#">About Us</a><!-- placeholder: link to about-us.html -->
+        <a href="../papex-v2.html#pricing">Pricing</a>
+        <a href="../blog.html">Blog</a>
+      </nav>
+    </div>
+    <p class="footer-copy">© 2026 PapeX Inc. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+(function () {
+  window.addEventListener('scroll', function () {
+    var bar = document.querySelector('.site-nav');
+    if (bar) bar.style.boxShadow = window.scrollY > 20 ? '0 1px 0 rgba(0,0,0,0.06)' : 'none';
+  }, { passive: true });
+  var copyBtns = document.querySelectorAll('.blog-article-copy');
+  copyBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var url = btn.getAttribute('data-copy-url') || window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          btn.classList.add('blog-article-copy--ok');
+          setTimeout(function () { btn.classList.remove('blog-article-copy--ok'); }, 1200);
+        });
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
