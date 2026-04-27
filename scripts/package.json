@@ -1,0 +1,11 @@
+{
+  "name": "papex-blog-scraper",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "fetch-blog": "node fetch-blog-to-markdown.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}

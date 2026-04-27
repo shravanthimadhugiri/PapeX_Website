@@ -1,8 +1,7 @@
 # PapeX Design System
-### Fintech SaaS Marketing Website — Cursor Reference File
+### Fintech SaaS Marketing Website (Cursor reference)
 
-> Paste relevant sections into Cursor chat when generating UI. These are standing rules —
-> not one-time instructions. Content copy changes go in chat directly, not here.
+> Paste relevant sections into Cursor chat when generating UI. These are standing rules, not one-time instructions. Content copy changes go in chat directly, not here.
 
 ---
 
@@ -13,17 +12,68 @@
 **Directive for `papex-v2.html` and new landing work:**
 
 - **Page background:** `#FFFFFF` (`--bg-primary`). Do not use dark navy as the primary canvas.
-- **Surfaces:** Cards `#F0FAFD` (`--bg-card`), hover / subtle fill `#E8F4F8` (`--bg-card-hover`, `--bg-surface`).
-- **Accent:** Brand orange `#E06D00` (`--orange`) for CTAs, labels, links, and icon wells — accent only, never full-page fill.
+- **Section bands:** Full-width sections **alternate** strictly between `#FFFFFF` and `#F2FCFF` (`--bg-alt`). Hero is white; How It Works is `#F2FCFF`; The Problem is white; Who It’s Built For is `#F2FCFF`; and so on down the page. Cards use the **glass** recipe below (semi-transparent white), not flat tinted section colors.
+- **Surfaces (glass cards):** Default card face is **`rgba(255,255,255,0.5)`** with **`backdrop-filter: blur(6px)`**, border **`#EEDDEE`**, radius **`17px`**, soft shadow **`5px 5px 30px rgba(0,0,0,0)`**. Hover: border tightens to orange, background to solid white, **`transform: scale(1.01)`**. Active: **`scale(0.95) rotateZ(1.7deg)`** (except where disabled for nested content). Subtle nested fills for inputs may still use `--bg-card-hover` where needed.
+- **Accent:** Brand orange `#E06D00` (`--orange`) for CTAs, labels, links, and icon wells. Accent only, never a full-page fill.
 - **Text:** Primary `#0F172A` (`--text-primary`), body secondary `#475569` (`--text-secondary`), meta `#94A3B8` (`--text-muted`).
 - **Borders:** `rgba(0, 0, 0, 0.08)` (`--border`), light dividers `rgba(0, 0, 0, 0.04)` (`--border-light`).
-- **Navbar:** `rgba(255, 255, 255, 0.92)` with `backdrop-filter: blur(16px)` and `border-bottom: 1px solid rgba(0, 0, 0, 0.06)`.
-- **Cards:** Background `#F0FAFD`, border `1px solid rgba(0, 0, 0, 0.08)`, shadow `0 2px 12px rgba(0, 0, 0, 0.06)`.
-- **Hero:** Subtle radial / linear orange tint behind the headline (low opacity) — not loud full-page gradients.
-- **Icons:** **Lucide** stroke icons in **orange-dim** boxes (40×40px, 8px radius) — no emoji in UI chrome.
-- **Typography (Google Fonts):** **Plus Jakarta Sans** (display / H1–H4 in `papex-v2.html`), **Inter** (body / UI), **JetBrains Mono** (metrics, money, stats, tables).
+- **Navbar:** Use a **scoped** top bar class (e.g. **`.site-nav`**) for all fixed-position and chrome rules. Do **not** style bare `nav { position: fixed; … }` or a second `<nav>` in the footer will duplicate the fixed bar. Values: `rgba(255, 255, 255, 0.92)`, `backdrop-filter: blur(16px)`, `border-bottom: 1px solid rgba(0, 0, 0, 0.06)`. Nav link color: **`--text-primary`**.
+- **Nav + footer links (marketing trim):** Only **POS Calculator**, **About Us**, **Pricing**, and **Blog** appear in the link row. Placeholders use `href="#"` plus HTML comments until real routes exist. **Log In** / **Download App** (and other CTAs) stay unchanged. On **`papex-v2.html`**, **Pricing** and **Blog** in the nav/footer use same-page fragments **`#pricing`** and **`#blog`** (smooth scroll + `getElementById`). The **From the blog** block is **`<section id="blog">`** (not a zero-height anchor). **View all posts** in that section still links to **`PapeX/blog.html`**. From pages inside **`PapeX/`** (e.g. **`pos-calculator.html`**, **`blog.html`**) link to the listing with **`blog.html`** as appropriate.
+- **Blog listing refresh:** From the directory that contains **`PapeX/`** and the saved blog index HTML (same folder as **`papex-v2.html`** in this workspace), run **`python3 PapeX/scripts/extract_blog_listing.py --write-blog-html PapeX/blog.html`**. Use **`--export /path/to/saved.html`** if the filename differs from the default in the script docstring. That regenerates **`PapeX/data/blog-posts.json`**, **`PapeX/blog-covers/`**, **`PapeX/blog-posts.partial.html`**, and injects cards between **`<!-- BLOG_LISTING_START -->`** / **`END`** in **`blog.html`**. Cards link to **`PapeX/articles/{slug}.html`** (local wrappers). The **From the blog** teaser on **`papex-v2.html`** is hand-maintained (first three posts); point **`href`** values at **`PapeX/articles/{slug}.html`** to match.
+- **Blog article pages:** Canonical URL list: **`blog-post-urls.txt`** next to **`papex-v2.html`** (24 lines). Run **`python3 PapeX/scripts/build_blog_article_pages.py`** from that same directory (optional **`--urls /path/to/blog-post-urls.txt`**). Writes **`PapeX/articles/{slug}.html`** with marketing chrome and an **iframe** to the live post (the live blog does not ship static article HTML to simple HTTP clients). Prefer serving the site over **HTTP** for iframes; **`file://`** may block embedded third-party pages in some browsers.
+- **Logo (marketing):** `PapeX/PapeX Logos/primary orange light.svg`. Navbar: `height: 32px; width: auto;` on the `<img>`, container `overflow: visible`. Footer: `height: 28px; width: auto;`, same overflow rule. Do not hard-code a pixel width on the logo image.
+- **Broken local links:** Until `about-us.html` and `pos-calculator.html` exist, nav (and footer) links use `href="#"` with HTML comments `<!-- placeholder: link to about-us.html -->` and `<!-- placeholder: link to pos-calculator.html -->` beside each placeholder. Keep the links in the nav; do not remove them.
+- **Hero:** Subtle radial orange tint behind the headline (low opacity), not loud full-page gradients. **Hero-only vertical padding:** `80px` top and bottom (exception to the default section padding). Hero product screenshot: scale **0.7**, **right-aligned**, **vertically centered** with the headline column (`align-items: center` on the hero grid; `transform-origin: center right` on desktop).
+- **Trust / pilot ticker:** Full-width **`#F2FCFF`** band with top/bottom hairline borders. **Seamless loop:** `.ticker-wrap` → **one** `.ticker-track` containing **four** identical `.ticker-set` blocks (phrase “Trusted by early adopters across”, sparkle separators, pilot labels, **`ticker-gap` `80px`** at end of each set). **`animation: ticker-loop 36s linear infinite`** with **`translateX(-25%)`** (one set width); **`animation-play-state: paused`** on **`.ticker-track:hover`**. Sparkle: inline SVG (Untitled-style stars/sparkles, `12px`, orange stroke). Copy weights: phrase `600` `--text-primary`; items `500` `--text-secondary`, `13px`, letter-spacing per CSS.
+- **Stats row:** Removed from the live landing; do not reintroduce the four macro stat cards unless product asks for them again.
+- **Problem / timeline:** Vertical line `2px` `rgba(224,109,0,0.25)`; nodes `14px` filled `var(--orange)`; highlight row uses tinted panel + `3px` left orange border. CTA: **Download PapeX for Free.**
+- **Who it’s built for:** Each **`.for-card-row`** is **`justify-content: space-between`**: **`.for-card-head`** (H4 + **`.for-pill`**) stays **left-aligned**; the **`.icon-btn`** sits on the **right**. Audience tag pills: `background: var(--orange-dim)`, `border: 1px solid var(--orange-border)`, `border-radius: 999px`, `padding: 4px 12px`, `font-size: 12px`, `color: var(--orange)`, `font-weight: 500`. Spacing: title → `12px` → tag → `24px` → body and bullets.
+- **Pricing:** Three equal-height glass cards; middle plan has class **`pricing-card--power-users`**: keep its **orange glow** and **all inner content** as-is when updating global card styles (do not strip that card’s glow or restructure its body). Middle header row uses `justify-content: space-between` with the **Exports** tag on the right. All pricing CTAs are **`btn-primary`**. Align price rows and CTAs with flex column + `margin-top: auto` on the CTA.
+- **Competitive landscape:** Section description sits **below** the H2 (not beside it), with **72px** space before the comparison table (`#competition .comp-table-wrap { margin-top: 72px }`).
+- **FAQ:** Two-column layout (`1fr` / `1.5fr`) on desktop: heading + intro on the left, accordion on the right. Stack on mobile. FAQ copy: no em dashes; reword naturally.
+- **Get Started:** Form cards use the **glass** card recipe. **Eyebrow row (`.fc-eyebrow`):** **`display: flex`**, **`align-items: center`**, **`justify-content: space-between`**, **`gap: 12px`**, full width. **`h3.fc-card-title`** on the **left**; status **`.tag`** on the **right** with **`display: inline-flex`**, **`width: fit-content`**, **`align-self: center`**, **`margin-left: auto`**, **`flex-shrink: 0`** so tags never stretch full width. Primary **`fc-primary`** buttons: **`width: 100%`**, **`justify-content: center`**, **`text-align: center`**. Primary actions pinned with `margin-top: auto` so CTAs align across the row. Section contact line: **`nico@papex.com`**. Investor primary action label: **Download One Pager** (no duplicate pitch deck button in the tabbed investor panel).
+- **Footer:** Background `#F2FCFF`, `border-top: 1px solid rgba(0,0,0,0.08)`, vertical padding **`56px`**. Desktop: logo left, links centered, legal right. Mobile: stack centered.
+- **Icons:** **Lucide** (or equivalent) SVGs at **`#E06D00`** stroke/fill. Container pattern **`.icon-btn`**: `background: none`, `border: none`, `padding: 15px 15px`, `border-radius: 10px`, `display: inline-flex`, centered; hover `background: rgba(170,170,170,0.062)`; SVG `width/height: 20px`. Use **`<div class="icon-btn">`** for decorative wells and **`<button type="button" class="icon-btn">`** only when the control is interactive. (Roadmap node circles **`.rm-dot`** stay separate.)
+- **Typography (Google Fonts):** **Plus Jakarta Sans** (display / H1–H4), **Inter** (body / UI), **Open Sans** weights **400 / 600 / 700** for **all numeric and metric displays** (`--font-mono` maps to Open Sans for tabular figures, stats, pricing amounts, TAM bars, calculator outputs, etc.).
 
-**Spacing (landing page):** Section vertical padding **120px** desktop / **72px** mobile; **56px** (desktop) / **40px** (mobile) from section intro block to main content; section label to H2 **24px**; H2 to intro paragraph **20px**; default grid gaps between cards **24px**; card interior padding **32px**; body paragraphs **margin-bottom: 1.5em** unless a component overrides.
+**Canonical marketing card (glass, all card-like modules on `papex-v2.html`):**
+
+```css
+.card,
+.aud-card,
+.how-step,
+.for-card,
+.pricing-card,
+.infra-card,
+.roadmap,
+.ap-benefit,
+.ap-stat,
+.ap-feature,
+.tam-row,
+.int-status-card,
+.form-card,
+.faq-item,
+.float-card,
+.st-vt-item.st-vt-highlight .st-vt-body,
+.pc-shell,
+.person-card {
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #EEDDEE;
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+/* + paired :hover / :active as in papex-shared.css */
+```
+
+**How It Works** outer **`.how-panel`** stays a **non-glass** transparent shell so only **`.how-step`** panels read as cards. **No dark card faces** on the marketing page. **`pricing-card--power-users`** adds an extra orange glow layer on top of the glass base.
+
+**Spacing (landing page):** Section vertical padding **`112px`** desktop / **`64px`** mobile, except **hero `80px`** top and bottom desktop (hero uses **`64px`** vertical padding on small screens with the global mobile section rule). **56px** desktop / **36px** mobile from the section intro block (label + H2 + optional intro copy) to the main content below. Section label → H2: **24px** (`margin-bottom` on `.section-label`). H2 → subheading: **20px**. Card grid gaps: **24px**. Card interior padding: **32px**.
+
+**Copy:** Avoid em dashes in customer-facing marketing copy on `papex-v2.html`; use commas, colons, or parentheses instead.
 
 Dark-theme tokens in §2 remain for **optional** product UI or decks only — not the default marketing site.
 
@@ -37,7 +87,7 @@ PapeX is infrastructure, not an app. On the **marketing site**, that reads as **
 
 For **dark presentations or product UI**, the language can stay deep, dark, and precise. Every pixel communicates reliability. The interface earns trust through restraint — not decoration.
 
-The light marketing aesthetic pairs **Plus Jakarta Sans** (display / headings in `papex-v2.html`) with **Inter** (body) and **JetBrains Mono** (data). Orange stays the single warm accent (CTAs, highlights, icon wells).
+The light marketing aesthetic pairs **Plus Jakarta Sans** (display / headings in `papex-v2.html`) with **Inter** (body) and **Open Sans** for **numeric and metric** UI. Orange stays the single warm accent (CTAs, highlights, icon strokes).
 
 ### Tone
 
@@ -65,22 +115,29 @@ The light marketing aesthetic pairs **Plus Jakarta Sans** (display / headings in
 
 ```css
 :root {
-  /* Brand Identity */
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-data:    'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Brand identity */
   --orange:           #E06D00;
   --orange-hover:     #F07A00;
-  --orange-dim:       rgba(224,109,0,0.12);
-  --orange-border:    rgba(224,109,0,0.28);
+  --orange-dim:       rgba(224,109,0,0.10);
+  --orange-border:    rgba(224,109,0,0.22);
 
   /* Backgrounds — light (canonical marketing tokens) */
   --bg-primary:       #FFFFFF;   /* Page base */
-  --bg-card:          #F0FAFD;   /* Cards, panels */
-  --bg-card-hover:    #E8F4F8;   /* Card hover */
-  --bg-surface:       #E8F4F8;   /* Nested surfaces, inputs context */
+  --bg-alt:           #F2FCFF;   /* Alternating section band */
+  --bg-card:          #FFFFFF;   /* Solid white contexts (inputs, pills); marketing cards use glass rgba in CSS */
+  --bg-card-hover:    #F8FEFF;   /* Hover / subtle nested fill */
+  --bg-surface:       #F8FEFF;   /* Nested surfaces, inputs context */
 
   /* Text — light */
-  --text-primary:     #0F172A;   /* Headlines */
-  --text-secondary:   #475569;   /* Body */
-  --text-muted:       #94A3B8;   /* Meta */
+  --text-primary:     #0F172A;
+  --text-secondary:   #475569;
+  --text-muted:       #94A3B8;
 
   /* Borders — light */
   --border:           rgba(0, 0, 0, 0.08);
@@ -117,14 +174,15 @@ The light marketing aesthetic pairs **Plus Jakarta Sans** (display / headings in
 
 | Layer | Color | Use |
 |-------|-------|-----|
-| Page base | `#FFFFFF` | Body, default section fill |
-| Card | `#F0FAFD` | Cards, stats bar, tab panels |
-| Elevated hover / surface | `#E8F4F8` | Hover, nested bands |
+| Page base | `#FFFFFF` (`--bg-primary`) | Body, “white” sections |
+| Section alt band | `#F2FCFF` (`--bg-alt`) | Full-bleed alternating sections (`.sec-alt`, pilot strip, footer) |
+| Card / panel face | `#FFFFFF` | All marketing cards and bordered panels |
+| Subtle hover / nested fill | `#F8FEFF` (`--bg-card-hover`, `--bg-surface`) | Icon wells context, optional inner fills only |
 | Divider | `rgba(0,0,0,0.08)` | Section breaks, tables |
 
 **Rules:**
 - White is the default canvas; orange is **never** a full-page fill.
-- Section separation: borders, spacing, or a **slightly** tinted band (`#F0FAFD`), not heavy gray blocks.
+- Alternate section backgrounds **only** between `#FFFFFF` and `#F2FCFF`. Do not place tinted `#F0FAFD` card faces on the marketing homepage; cards stay white for contrast and consistency.
 - One primary orange CTA per viewport where possible.
 - Hero: optional **radial orange glow** behind H1 only (see §2 Gradient).
 
@@ -172,14 +230,15 @@ The light marketing aesthetic pairs **Plus Jakarta Sans** (display / headings in
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&family=JetBrains+Mono:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet">
 ```
 
 ```css
 :root {
   --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-data: 'JetBrains Mono', ui-monospace, monospace;
+  --font-mono: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-data: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 body { font-family: var(--font-body); }
@@ -187,12 +246,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); }
 h5, h6 { font-family: var(--font-body); }
 
 /* Metrics, money, tables, phone mockup amounts */
-.stat-num, .ap-stat-val, .ri-amt, .fc-val, .tr-amt, .ab-amount, .abr-val, .ph-count, table td .mono {
-  font-family: var(--font-data);
+.ap-stat-val, .ri-amt, .fc-val, .tr-amt, .ab-amount, .abr-val, .ph-count, .pricing-amount, table td .mono {
+  font-family: var(--font-mono);
 }
 ```
 
-**Icons:** Use [Lucide](https://lucide.dev) SVGs (stroke `currentColor`), centered in **40×40px** wells: `background: var(--orange-dim); border: 1px solid var(--orange-border); border-radius: 8px; color: var(--orange);`
+**Icons:** Use [Lucide](https://lucide.dev) SVGs at **`#E06D00`**. Standard container: **`.icon-btn`** (see §0): neutral well, `padding: 15px 15px`, `border-radius: 10px`, hover tint `rgba(170,170,170,0.062)`. Decorative wells use `<div class="icon-btn">`; only use `<button class="icon-btn">` when the control is interactive.
 
 ### Type Scale
 
@@ -248,7 +307,7 @@ p:last-child { margin-bottom: 0; }
 }
 
 .text-mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 14px;
   color: var(--text-secondary);
 }
@@ -261,7 +320,7 @@ p:last-child { margin-bottom: 0; }
 3. **Section labels** (e.g., "HOW IT WORKS") always appear above the H2 in orange uppercase.
 4. **Body copy max-width: 60ch** — never full-width paragraphs.
 5. **Muted slate** for descriptions; **navy/slate** for headlines on light backgrounds.
-6. **Monospace (`JetBrains Mono`)** for any numbers, metrics, or transaction data — signals precision.
+6. **Open Sans (`--font-mono`)** for any numbers, metrics, or transaction data on the marketing site (replaces monospace for a cleaner numeric texture).
 
 ---
 

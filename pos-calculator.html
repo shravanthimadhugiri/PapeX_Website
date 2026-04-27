@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PapeX | POS Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../papex-shared.css">
+<style>
+  /* Section intro: design-system rhythm — H1→supporting body ≈ 20px. */
+  .pc-page-head h1 {
+    margin-bottom: 20px;
+  }
+  .pc-page-head p {
+    margin-bottom: 0;
+    max-width: 60ch;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  /* Calculator surfaces stay static (no shared glass hover/active on .card / .pc-shell). */
+  .pc-shell.pc-shell-static,
+  .card.pc-card-static {
+    cursor: default;
+  }
+  .pc-shell.pc-shell-static:hover,
+  .pc-shell.pc-shell-static:active,
+  .card.pc-card-static:hover,
+  .card.pc-card-static:active {
+    transform: none !important;
+    border: 1px solid #EEDDEE !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0) !important;
+  }
+
+  .pc-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* Condensed outputs: clearer hierarchy, more breathing room. */
+  .pc-outputs-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+  }
+  .pc-output-hero {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 28px 24px 26px;
+    margin-bottom: 20px;
+    border-left: 3px solid var(--orange);
+  }
+  .pc-output-hero-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+  .pc-output-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(17px, 1.25vw, 19px);
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+    margin: 0 0 16px;
+    max-width: 28ch;
+  }
+  .pc-output-hero-val {
+    font-family: var(--font-mono);
+    font-size: clamp(32px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--orange);
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+  }
+  .pc-output-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .pc-output-tile {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 20px;
+    min-height: 108px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .pc-output-tile-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    line-height: 1.35;
+    max-width: 22ch;
+  }
+  .pc-output-tile-val {
+    font-family: var(--font-mono);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.04em;
+    line-height: 1.15;
+    margin-top: auto;
+  }
+  .pc-panel-note {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .pc-assumptions {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--orange-border);
+    background: var(--orange-dim);
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .pc-assumptions strong { color: var(--text-primary); }
+  .pc-active-link { color: var(--orange) !important; font-weight: 500 !important; }
+  .pc-full-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .pc-full-section.card {
+    cursor: default;
+    text-align: left;
+  }
+  .pc-full-section.card:hover,
+  .pc-full-section.card:active {
+    transform: none;
+    border: 1px solid #EEDDEE;
+    background: rgba(255, 255, 255, 0.5);
+  }
+  .pc-full-section h2 {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text-primary);
+  }
+  .pc-full-section .lead {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    max-width: 65ch;
+  }
+  .pc-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .pc-mini-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    background: var(--bg-primary);
+  }
+  .pc-mini-card h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin: 0 0 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .pc-mini-card ul.bullet-list {
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 1.75em;
+  }
+  .pc-benefits-list {
+    margin: 16px 0 0;
+    padding-left: 1.25em;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+  .pc-benefits-list li { margin-bottom: 6px; }
+  .pc-source-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pc-source-list a {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: border-color var(--transition), background var(--transition);
+  }
+  .pc-source-list a:hover {
+    border-color: rgba(224, 109, 0, 0.35);
+    background: var(--bg-card-hover);
+  }
+  .pc-source-list .src-title { font-weight: 600; font-size: 15px; }
+  .pc-source-list .src-desc { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+  .pc-source-list svg { flex-shrink: 0; color: var(--orange); margin-top: 2px; }
+  .pc-table-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 12px;
+    line-height: 1.55;
+  }
+  .pc-inline-input {
+    width: 100%;
+    max-width: 140px;
+    margin-left: auto;
+    text-align: right;
+  }
+  .pc-update-legend {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-light);
+  }
+  @media (max-width: 900px) {
+    .pc-cards { grid-template-columns: 1fr; }
+    .pc-two-col { grid-template-columns: 1fr; }
+    .pc-output-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="../papex-v2.html" class="nav-logo" aria-label="PapeX">
+      <img src="PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" />
+    </a>
+
+    <div class="nav-links">
+      <a href="pos-calculator.html" class="pc-active-link" aria-current="page">POS Calculator</a>
+      <a href="#">About Us</a><!-- placeholder: link to about-us.html -->
+      <a href="../papex-v2.html#pricing">Pricing</a>
+      <a href="blog.html">Blog</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="#" class="btn btn-ghost btn-sm">Log In</a>
+      <a href="#" class="btn btn-primary btn-sm">Download App</a>
+    </div>
+  </div>
+</nav>
+
+<main class="subpage-main">
+  <section class="sec-alt">
+    <div class="pc-page-head reveal">
+      <span class="section-label">POS Calculator</span>
+      <h1>Model digital receipt economics by location.</h1>
+      <p>Use condensed mode for a quick estimate, or open the full model for mix tables, cost references, and analytics. Live cells update from your inputs; fixed snapshot assumptions stay labeled.</p>
+    </div>
+
+    <div class="pc-shell pc-shell-static reveal reveal-d1">
+      <div class="pc-tabs" role="tablist" aria-label="Calculator modes">
+        <button class="pc-tab active" id="tab-condensed" role="tab" aria-selected="true" aria-controls="panel-condensed" type="button">Condensed</button>
+        <button class="pc-tab" id="tab-full" role="tab" aria-selected="false" aria-controls="panel-full" type="button">Full model</button>
+      </div>
+
+      <div class="pc-panel active" id="panel-condensed" role="tabpanel" aria-labelledby="tab-condensed">
+        <div class="pc-cards">
+          <div class="card card-lg pc-card-static">
+            <div class="pc-sub">Inputs</div>
+            <div class="pc-inputs">
+              <div class="pc-field">
+                <label for="merchantLocations">Merchant locations</label>
+                <input id="merchantLocations" type="number" inputmode="numeric" min="0" step="100" value="20000">
+              </div>
+              <div class="pc-field">
+                <label for="txPerMerchant">Transactions per merchant / month</label>
+                <input id="txPerMerchant" type="number" inputmode="numeric" min="0" step="10" value="3000">
+              </div>
+              <div class="pc-field">
+                <label for="customersPerMerchant">Unique customers per merchant / month</label>
+                <input id="customersPerMerchant" type="number" inputmode="numeric" min="0" step="10" value="2000">
+              </div>
+              <div class="pc-field">
+                <label for="averageOrderValue">Average order value ($)</label>
+                <input id="averageOrderValue" type="number" inputmode="decimal" min="0" step="0.5" value="25">
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-lg pc-card-static">
+            <div class="pc-sub">Outputs</div>
+            <div class="pc-outputs-stack">
+              <article class="pc-output-hero" aria-labelledby="out-hero-title">
+                <p class="pc-output-hero-eyebrow">Primary outcome</p>
+                <h3 class="pc-output-hero-title" id="out-hero-title">Additional annual POS revenue</h3>
+                <div class="pc-output-hero-val font-data" id="outAnnualRevenue">$0</div>
+              </article>
+              <div class="pc-output-grid">
+                <div class="pc-output-tile">
+                  <span class="pc-output-tile-label">Total transactions / month</span>
+                  <span class="pc-output-tile-val font-data" id="outMonthlyTransactions">0</span>
+                </div>
+                <div class="pc-output-tile">
+                  <span class="pc-output-tile-label">Yearly e-receipt cost</span>
+                  <span class="pc-output-tile-val font-data" id="outYearlyReceiptCost">$0</span>
+                </div>
+              </div>
+            </div>
+            <div class="pc-assumptions">
+              <strong>Assumptions used for this inferred model:</strong><br>
+              e-receipt unit cost = <span id="assumptionUnitCost"></span> per transaction, and annual POS uplift = <span id="assumptionUplift"></span> of annual GMV.
+              These constants are chosen so default snapshot inputs reproduce the observed baseline outputs.
+            </div>
+            <p class="pc-panel-note">Full source formulas were unavailable in the uploaded snapshot, so this condensed model is intentionally transparent and easy to replace later.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pc-panel" id="panel-full" role="tabpanel" aria-labelledby="tab-full" hidden>
+        <div class="pc-full-stack">
+
+          <div class="card card-lg pc-full-section">
+            <h2>Modeled outcomes</h2>
+            <p class="lead">Gross margin and analytics views are stacked below with sources at the bottom.</p>
+          </div>
+
+          <div class="card card-lg pc-full-section">
+            <h2>Gross margin</h2>
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Cost</th>
+                    <th class="num">Value</th>
+                    <th>Reference</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Per printed receipt</td>
+                    <td class="num">$0.03</td>
+                    <td>Thermal paper + printer wear</td>
+                  </tr>
+                  <tr>
+                    <td>Per 1,000 emails sent</td>
+                    <td class="num">$0.10</td>
+                    <td>Delivery + compliance overhead</td>
+                  </tr>
+                  <tr>
+                    <td>Per 1,000 texts sent</td>
+                    <td class="num">$10</td>
+                    <td>Carrier + anti-fraud overhead</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pc-two-col">
+              <div class="pc-mini-card">
+                <h3>Costs for ESPs</h3>
+                <ul class="bullet-list">
+                  <li>Engineering time</li>
+                  <li>Deliverability monitoring</li>
+                  <li>Bounce handling</li>
+                  <li>List management</li>
+                  <li>Compliance (CAN-SPAM, GDPR, CCPA)</li>
+                  <li>Uptime redundancy</li>
+                </ul>
+              </div>
+              <div class="pc-mini-card">
+                <h3>Costs for SMS</h3>
+                <ul class="bullet-list">
+                  <li>Delivery tracking</li>
+                  <li>Opt-out processing (&ldquo;STOP&rdquo; handling)</li>
+                  <li>Carrier filtering management</li>
+                  <li>Fraud prevention</li>
+                  <li>Message formatting logic</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card-lg pc-full-section">
+            <h2>Example input / mix</h2>
+            <p class="lead">Edit the four drivers in the table. Mix percentages follow the saved snapshot; monthly counts scale with total transactions.</p>
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Example</th>
+                    <th class="num">Input / mix</th>
+                    <th class="num">Monthly count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Merchant locations</td>
+                    <td class="num"><input class="pc-inline-input" id="fmMerchantLocations" type="number" inputmode="numeric" min="0" step="100" value="20000" aria-label="Merchant locations"></td>
+                    <td class="num">&mdash;</td>
+                  </tr>
+                  <tr>
+                    <td>Transactions total (typical SMB)</td>
+                    <td class="num"><input class="pc-inline-input" id="fmTxPerMerchant" type="number" inputmode="numeric" min="0" step="10" value="3000" aria-label="Transactions total per merchant per month"></td>
+                    <td class="num">&mdash;</td>
+                  </tr>
+                  <tr>
+                    <td>Unique customers per month</td>
+                    <td class="num"><input class="pc-inline-input" id="fmCustomersPerMerchant" type="number" inputmode="numeric" min="0" step="10" value="2000" aria-label="Unique customers per month"></td>
+                    <td class="num">&mdash;</td>
+                  </tr>
+                  <tr>
+                    <td>Average order value ($)</td>
+                    <td class="num"><input class="pc-inline-input" id="fmAverageOrderValue" type="number" inputmode="decimal" min="0" step="0.5" value="25" aria-label="Average order value"></td>
+                    <td class="num">&mdash;</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Printed + emailed (combined, non-additive)</strong></td>
+                    <td class="num"><strong>80%</strong></td>
+                    <td class="num" id="fmCountCombined"><strong>0</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Printed (component of combined)</td>
+                    <td class="num">45%</td>
+                    <td class="num" id="fmCountPrinted">0</td>
+                  </tr>
+                  <tr>
+                    <td>Emailed (component of combined)</td>
+                    <td class="num">35%</td>
+                    <td class="num" id="fmCountEmailed">0</td>
+                  </tr>
+                  <tr>
+                    <td>Texted</td>
+                    <td class="num">10%</td>
+                    <td class="num" id="fmCountTexted">0</td>
+                  </tr>
+                  <tr>
+                    <td>No receipt</td>
+                    <td class="num">10%</td>
+                    <td class="num" id="fmCountNoReceipt">0</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Total transactions monthly (no double count)</strong></td>
+                    <td class="num">&mdash;</td>
+                    <td class="num" id="fmCountTotal"><strong>0</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="pc-table-note">Mix shares are fixed from the snapshot (80% / 45% / 35% / 10% / 10%) so combined print+email stays non-additive vs. total.</p>
+          </div>
+
+          <div class="card card-lg pc-full-section">
+            <h2>Type of receipt</h2>
+            <p class="lead">Monthly POS costs (indirect to merchants). Live rows scale print+email and text lines from snapshot baselines at 60M monthly transactions.</p>
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Type of receipt</th>
+                    <th class="num">Monthly POS costs (indirect to merchants)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>print + email</td>
+                    <td class="num" id="fmCostPrintEmail">$0</td>
+                  </tr>
+                  <tr>
+                    <td>text</td>
+                    <td class="num" id="fmCostText">$0</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Monthly e-receipt total</strong></td>
+                    <td class="num" id="fmCostMonthlyTotal"><strong>$0</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Yearly e-receipt total</strong></td>
+                    <td class="num" id="fmCostYearlyTotal"><strong>$0</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card card-lg pc-full-section">
+            <h2>Analytics</h2>
+            <h3 style="margin-top:8px;margin-bottom:8px;font-size:16px;">Basic metrics</h3>
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Basic metrics</th>
+                    <th class="num">Value</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Average order value ($)</td>
+                    <td class="num" id="fmBasicAov">$0</td>
+                    <td>From your input</td>
+                  </tr>
+                  <tr>
+                    <td>Transactions per month</td>
+                    <td class="num" id="fmBasicTx">0</td>
+                    <td>Per merchant baseline</td>
+                  </tr>
+                  <tr>
+                    <td>Unique customers per month</td>
+                    <td class="num" id="fmBasicCust">0</td>
+                    <td>Estimated active profiles</td>
+                  </tr>
+                  <tr>
+                    <td>Total POS customer count (# merchants)</td>
+                    <td class="num" id="fmBasicMerchants">0</td>
+                    <td>Network-wide footprint</td>
+                  </tr>
+                  <tr>
+                    <td>Typical POS processing fee (%)</td>
+                    <td class="num">0.4%</td>
+                    <td>Share of added merchant revenue (static)</td>
+                  </tr>
+                  <tr>
+                    <td>Per 1,000 texts sent</td>
+                    <td class="num">$10</td>
+                    <td>SMS delivery cost (static)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p style="margin-top:20px;margin-bottom:8px;font-size:14px;color:var(--text-secondary);max-width:62ch">They would get:</p>
+            <ul class="pc-benefits-list">
+              <li>Higher digital receipt penetration</li>
+              <li>More identifiable transactions</li>
+              <li>Better paper and waste handling</li>
+              <li>Better lifetime value calculations</li>
+              <li>Better retention analytics</li>
+            </ul>
+
+            <h3 style="margin-top:24px;margin-bottom:8px;font-size:16px;">Example</h3>
+            <div class="data-table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Example</th>
+                    <th class="num">Without PapeX</th>
+                    <th class="num">With PapeX</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Identified transactions rate (%)</td>
+                    <td class="num">45%</td>
+                    <td class="num">63%</td>
+                    <td>Because not everyone has PapeX yet (static)</td>
+                  </tr>
+                  <tr>
+                    <td>Identified customers</td>
+                    <td class="num" id="fmIdentWithout">0</td>
+                    <td class="num" id="fmIdentWith">0</td>
+                    <td>Unique customers &times; rate (live)</td>
+                  </tr>
+                  <tr>
+                    <td>60-day repeat rate (%)</td>
+                    <td class="num">35%</td>
+                    <td class="num">40%</td>
+                    <td>Static</td>
+                  </tr>
+                  <tr>
+                    <td>60-day repeat customers</td>
+                    <td class="num" id="fmRepeatWithout">0</td>
+                    <td class="num" id="fmRepeatWith">0</td>
+                    <td>Identified &times; repeat rate (live)</td>
+                  </tr>
+                  <tr>
+                    <td>Incremental merchant revenue per month</td>
+                    <td class="num">$20,000</td>
+                    <td class="num">$22,500</td>
+                    <td>Illustrative per-merchant snapshot (static)</td>
+                  </tr>
+                  <tr>
+                    <td>Incremental merchant revenue per year</td>
+                    <td class="num">$240,000</td>
+                    <td class="num">$270,000</td>
+                    <td>Illustrative per-merchant snapshot (static)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Total added merchant revenue</strong></td>
+                    <td class="num" id="fmTotalMerchAnnWithout"><strong>$0</strong></td>
+                    <td class="num" id="fmTotalMerchAnnWith"><strong>$0</strong></td>
+                    <td>$20k or $22.5k &times; 12 &times; merchants (live)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Total added POS revenue</strong></td>
+                    <td class="num" id="fmTotalPosAnnWithout"><strong>$0</strong></td>
+                    <td class="num" id="fmTotalPosAnnWith"><strong>$0</strong></td>
+                    <td>0.4% of total added merchant revenue (live)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="highlight-box" style="margin-top:24px;">
+              <div class="hb-label">Value added by PapeX</div>
+              <div class="hb-val" id="outFullAnnualRevenue">$0</div>
+              <div class="hb-sub">Additional annual POS revenue (matches condensed uplift model)</div>
+            </div>
+          </div>
+
+          <div class="card card-lg pc-full-section">
+            <h2>Sources</h2>
+            <ul class="pc-source-list">
+              <li>
+                <a href="https://www.twilio.com/en-us/sms/pricing/us" target="_blank" rel="noopener noreferrer">
+                  <span>
+                    <div class="src-title">SMS pricing (United States)</div>
+                    <div class="src-desc">Reference for cost per 1,000 texts sent.</div>
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://greenamerica.org/paper-receipt-survey" target="_blank" rel="noopener noreferrer">
+                  <span>
+                    <div class="src-title">Paper receipt survey</div>
+                    <div class="src-desc">Green America survey on paper receipts and customer preferences.</div>
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://research.aimultiple.com/email-marketing-pricing/" target="_blank" rel="noopener noreferrer">
+                  <span>
+                    <div class="src-title">Email marketing pricing comparison</div>
+                    <div class="src-desc">Reference for email delivery and marketing cost assumptions.</div>
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                </a>
+              </li>
+            </ul>
+
+            <div class="pc-update-legend">
+              <strong>How this tab updates:</strong>
+              <ul class="bullet-list" style="margin-top:8px;margin-bottom:0">
+                <li><strong>Live:</strong> mix monthly counts, receipt-cost subtotals (scaled from snapshot at 60M tx), identified and repeat customers, total added merchant and POS revenue totals.</li>
+                <li><strong>Static:</strong> gross margin unit costs, ESP and SMS cost bullet lists, mix percentages, identified tx rates, repeat rates, illustrative incremental per-merchant rows, POS fee and SMS reference rows.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-row">
+      <a href="../papex-v2.html" class="footer-logo" aria-label="PapeX">
+        <img src="PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" />
+      </a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <p class="footer-blurb">Download the PapeX app and keep every receipt in one place. Purchases sync automatically after checkout so you never lose proof for returns, expenses, or tax time.</p>
+        <a href="../papex-v2.html#hero" class="btn-app-store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="app-dl-text">
+            <span class="app-dl-small">Download on the</span>
+            <span class="app-dl-big">App Store</span>
+          </div>
+        </a>
+      </div>
+      <nav class="footer-col footer-col--nav" aria-label="Footer">
+        <a href="pos-calculator.html">POS Calculator</a>
+        <a href="#">About Us</a><!-- placeholder: link to about-us.html -->
+        <a href="../papex-v2.html#pricing">Pricing</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+    </div>
+    <p class="footer-copy">© 2026 PapeX Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Inferred constants chosen to reproduce snapshot outputs at defaults.
+const E_RECEIPT_UNIT_COST = 0.001035;
+const ANNUAL_UPLIFT_RATE = 0.0002;
+
+// Receipt-cost scaling: snapshot baselines at 60M monthly tx, 48M combined print+email, 6M text.
+const BASE_MONTHLY_TX = 60000000;
+const BASE_TX_COMBINED = 48000000;
+const BASE_TX_TEXTED = 6000000;
+const BASE_COST_PRINT_EMAIL = 2100;
+const BASE_COST_TEXT = 60000;
+
+// Mix shares (snapshot).
+const MIX_COMBINED = 0.8;
+const MIX_PRINTED_OF_TOTAL = 0.45;
+const MIX_EMAILED_OF_TOTAL = 0.35;
+const MIX_TEXTED = 0.1;
+const MIX_NO_RECEIPT = 0.1;
+
+// Analytics (snapshot).
+const RATE_IDENT_WITHOUT = 0.45;
+const RATE_IDENT_WITH = 0.63;
+const RATE_REPEAT_WITHOUT = 0.35;
+const RATE_REPEAT_WITH = 0.4;
+const INCR_MERCH_MONTH_WITHOUT = 20000;
+const INCR_MERCH_MONTH_WITH = 22500;
+const POS_FEE_ON_MERCHANT_REVENUE = 0.004;
+
+const fields = {
+  merchantLocations: document.getElementById('merchantLocations'),
+  txPerMerchant: document.getElementById('txPerMerchant'),
+  customersPerMerchant: document.getElementById('customersPerMerchant'),
+  averageOrderValue: document.getElementById('averageOrderValue')
+};
+
+const fmFields = {
+  merchantLocations: document.getElementById('fmMerchantLocations'),
+  txPerMerchant: document.getElementById('fmTxPerMerchant'),
+  customersPerMerchant: document.getElementById('fmCustomersPerMerchant'),
+  averageOrderValue: document.getElementById('fmAverageOrderValue')
+};
+
+const outputs = {
+  annualRevenue: document.getElementById('outAnnualRevenue'),
+  monthlyTransactions: document.getElementById('outMonthlyTransactions'),
+  yearlyReceiptCost: document.getElementById('outYearlyReceiptCost'),
+  fullAnnualRevenue: document.getElementById('outFullAnnualRevenue')
+};
+
+const fmCells = {
+  countCombined: document.getElementById('fmCountCombined'),
+  countPrinted: document.getElementById('fmCountPrinted'),
+  countEmailed: document.getElementById('fmCountEmailed'),
+  countTexted: document.getElementById('fmCountTexted'),
+  countNoReceipt: document.getElementById('fmCountNoReceipt'),
+  countTotal: document.getElementById('fmCountTotal'),
+  costPrintEmail: document.getElementById('fmCostPrintEmail'),
+  costText: document.getElementById('fmCostText'),
+  costMonthlyTotal: document.getElementById('fmCostMonthlyTotal'),
+  costYearlyTotal: document.getElementById('fmCostYearlyTotal'),
+  basicAov: document.getElementById('fmBasicAov'),
+  basicTx: document.getElementById('fmBasicTx'),
+  basicCust: document.getElementById('fmBasicCust'),
+  basicMerchants: document.getElementById('fmBasicMerchants'),
+  identWithout: document.getElementById('fmIdentWithout'),
+  identWith: document.getElementById('fmIdentWith'),
+  repeatWithout: document.getElementById('fmRepeatWithout'),
+  repeatWith: document.getElementById('fmRepeatWith'),
+  totalMerchAnnWithout: document.getElementById('fmTotalMerchAnnWithout'),
+  totalMerchAnnWith: document.getElementById('fmTotalMerchAnnWith'),
+  totalPosAnnWithout: document.getElementById('fmTotalPosAnnWithout'),
+  totalPosAnnWith: document.getElementById('fmTotalPosAnnWith')
+};
+
+document.getElementById('assumptionUnitCost').textContent = '$' + E_RECEIPT_UNIT_COST.toFixed(6);
+document.getElementById('assumptionUplift').textContent = (ANNUAL_UPLIFT_RATE * 100).toFixed(3) + '%';
+
+function asNumber(input) {
+  const value = Number(input && input.value);
+  return Number.isFinite(value) && value > 0 ? value : 0;
+}
+
+function formatInteger(value) {
+  return Math.round(value).toLocaleString('en-US');
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0
+  }).format(value);
+}
+
+function syncCondensedToFull() {
+  fmFields.merchantLocations.value = fields.merchantLocations.value;
+  fmFields.txPerMerchant.value = fields.txPerMerchant.value;
+  fmFields.customersPerMerchant.value = fields.customersPerMerchant.value;
+  fmFields.averageOrderValue.value = fields.averageOrderValue.value;
+}
+
+function syncFullToCondensed() {
+  fields.merchantLocations.value = fmFields.merchantLocations.value;
+  fields.txPerMerchant.value = fmFields.txPerMerchant.value;
+  fields.customersPerMerchant.value = fmFields.customersPerMerchant.value;
+  fields.averageOrderValue.value = fmFields.averageOrderValue.value;
+}
+
+function readStateFromCondensed() {
+  const merchantLocations = asNumber(fields.merchantLocations);
+  const txPerMerchant = asNumber(fields.txPerMerchant);
+  const customersPerMerchant = asNumber(fields.customersPerMerchant);
+  const averageOrderValue = asNumber(fields.averageOrderValue);
+  const totalTransactionsPerMonth = merchantLocations * txPerMerchant;
+  const yearlyEReceiptCost = totalTransactionsPerMonth * 12 * E_RECEIPT_UNIT_COST;
+  const annualGmv = merchantLocations * customersPerMerchant * averageOrderValue * 12;
+  const additionalAnnualPosRevenue = annualGmv * ANNUAL_UPLIFT_RATE;
+  return {
+    merchantLocations,
+    txPerMerchant,
+    customersPerMerchant,
+    averageOrderValue,
+    totalTransactionsPerMonth,
+    yearlyEReceiptCost,
+    annualGmv,
+    additionalAnnualPosRevenue
+  };
+}
+
+function updateFullModelTables(state) {
+  const tx = state.totalTransactionsPerMonth;
+  const txCombined = MIX_COMBINED * tx;
+  const txPrinted = MIX_PRINTED_OF_TOTAL * tx;
+  const txEmailed = MIX_EMAILED_OF_TOTAL * tx;
+  const txTexted = MIX_TEXTED * tx;
+  const txNo = MIX_NO_RECEIPT * tx;
+
+  const bold = (el, val) => {
+    if (!el) return;
+    el.innerHTML = '<strong>' + formatInteger(val) + '</strong>';
+  };
+  bold(fmCells.countCombined, txCombined);
+  fmCells.countPrinted.textContent = formatInteger(txPrinted);
+  fmCells.countEmailed.textContent = formatInteger(txEmailed);
+  fmCells.countTexted.textContent = formatInteger(txTexted);
+  fmCells.countNoReceipt.textContent = formatInteger(txNo);
+  bold(fmCells.countTotal, tx);
+
+  const costPE = BASE_COST_PRINT_EMAIL * (txCombined / BASE_TX_COMBINED);
+  const costText = BASE_COST_TEXT * (txTexted / BASE_TX_TEXTED);
+  const monthlyCost = costPE + costText;
+  const yearlyCost = monthlyCost * 12;
+
+  fmCells.costPrintEmail.textContent = formatCurrency(costPE);
+  fmCells.costText.textContent = formatCurrency(costText);
+  fmCells.costMonthlyTotal.innerHTML = '<strong>' + formatCurrency(monthlyCost) + '</strong>';
+  fmCells.costYearlyTotal.innerHTML = '<strong>' + formatCurrency(yearlyCost) + '</strong>';
+
+  fmCells.basicAov.textContent = formatCurrency(state.averageOrderValue);
+  fmCells.basicTx.textContent = formatInteger(state.txPerMerchant);
+  fmCells.basicCust.textContent = formatInteger(state.customersPerMerchant);
+  fmCells.basicMerchants.textContent = formatInteger(state.merchantLocations);
+
+  const identW = Math.round(state.customersPerMerchant * RATE_IDENT_WITHOUT);
+  const identX = Math.round(state.customersPerMerchant * RATE_IDENT_WITH);
+  fmCells.identWithout.textContent = formatInteger(identW);
+  fmCells.identWith.textContent = formatInteger(identX);
+  fmCells.repeatWithout.textContent = formatInteger(Math.round(identW * RATE_REPEAT_WITHOUT));
+  fmCells.repeatWith.textContent = formatInteger(Math.round(identX * RATE_REPEAT_WITH));
+
+  const merchAnnW = INCR_MERCH_MONTH_WITHOUT * state.merchantLocations * 12;
+  const merchAnnX = INCR_MERCH_MONTH_WITH * state.merchantLocations * 12;
+  fmCells.totalMerchAnnWithout.innerHTML = '<strong>' + formatCurrency(merchAnnW) + '</strong>';
+  fmCells.totalMerchAnnWith.innerHTML = '<strong>' + formatCurrency(merchAnnX) + '</strong>';
+  fmCells.totalPosAnnWithout.innerHTML = '<strong>' + formatCurrency(merchAnnW * POS_FEE_ON_MERCHANT_REVENUE) + '</strong>';
+  fmCells.totalPosAnnWith.innerHTML = '<strong>' + formatCurrency(merchAnnX * POS_FEE_ON_MERCHANT_REVENUE) + '</strong>';
+}
+
+function recalculate() {
+  const state = readStateFromCondensed();
+  outputs.monthlyTransactions.textContent = formatInteger(state.totalTransactionsPerMonth);
+  outputs.yearlyReceiptCost.textContent = formatCurrency(state.yearlyEReceiptCost);
+  outputs.annualRevenue.textContent = formatCurrency(state.additionalAnnualPosRevenue);
+  if (outputs.fullAnnualRevenue) {
+    outputs.fullAnnualRevenue.textContent = formatCurrency(state.additionalAnnualPosRevenue);
+  }
+  updateFullModelTables(state);
+}
+
+Object.values(fields).forEach((el) => {
+  el.addEventListener('input', () => {
+    syncCondensedToFull();
+    recalculate();
+  });
+  el.addEventListener('change', () => {
+    syncCondensedToFull();
+    recalculate();
+  });
+});
+
+Object.values(fmFields).forEach((el) => {
+  el.addEventListener('input', () => {
+    syncFullToCondensed();
+    recalculate();
+  });
+  el.addEventListener('change', () => {
+    syncFullToCondensed();
+    recalculate();
+  });
+});
+
+const tabs = document.querySelectorAll('.pc-tab');
+const panels = document.querySelectorAll('.pc-panel');
+const tablist = document.querySelector('[role="tablist"]');
+
+tabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    tabs.forEach((item) => {
+      item.classList.remove('active');
+      item.setAttribute('aria-selected', 'false');
+    });
+    panels.forEach((panel) => {
+      panel.classList.remove('active');
+      panel.hidden = true;
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    const panel = document.getElementById(tab.getAttribute('aria-controls'));
+    if (panel) {
+      panel.classList.add('active');
+      panel.hidden = false;
+    }
+    syncCondensedToFull();
+    recalculate();
+  });
+});
+
+if (tablist) {
+  tablist.addEventListener('keydown', (e) => {
+    const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+    if (!keys.includes(e.key)) return;
+    const list = Array.from(tabs);
+    const i = list.indexOf(document.activeElement);
+    if (i === -1) return;
+    e.preventDefault();
+    let next = i;
+    if (e.key === 'ArrowLeft') next = (i + list.length - 1) % list.length;
+    if (e.key === 'ArrowRight') next = (i + 1) % list.length;
+    if (e.key === 'Home') next = 0;
+    if (e.key === 'End') next = list.length - 1;
+    list[next].focus();
+    list[next].click();
+  });
+}
+
+const revObs = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach((el) => revObs.observe(el));
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.site-nav');
+  if (nav) {
+    nav.style.boxShadow = window.scrollY > 20 ? '0 1px 0 rgba(0,0,0,0.06)' : 'none';
+  }
+}, { passive: true });
+
+syncCondensedToFull();
+recalculate();
+</script>
+</body>
+</html>

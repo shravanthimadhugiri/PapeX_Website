@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PapeX | Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..800&family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../papex-shared.css">
+<style>
+  .pc-active-link { color: var(--orange) !important; font-weight: 500 !important; }
+
+  .blog-page-head h1 {
+    margin-bottom: 20px;
+  }
+  .blog-page-head p {
+    margin-bottom: 0;
+    max-width: 60ch;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .blog-page-head {
+    max-width: 62ch;
+    margin-bottom: 16px;
+  }
+
+  /* Tighten gap between intro copy and card grid (shared `section` uses large vertical padding). */
+  main.subpage-main > section:first-of-type {
+    padding-bottom: 32px;
+  }
+  main.subpage-main > section:nth-of-type(2) {
+    padding-top: 20px;
+  }
+
+  .blog-posts-head {
+    margin-bottom: var(--section-head-to-content);
+  }
+  .blog-posts-head h2 {
+    margin-bottom: 12px;
+  }
+  .blog-posts-head p {
+    max-width: 52ch;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  .blog-list-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  @media (min-width: 720px) {
+    .blog-list-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .blog-list-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  a.blog-list-card.card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    min-height: 0;
+  }
+  .blog-list-card-img-wrap {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: var(--bg-surface);
+    flex-shrink: 0;
+  }
+  .blog-list-card-img-wrap--empty {
+    min-height: 0;
+    background: linear-gradient(145deg, var(--orange-dim) 0%, var(--bg-alt) 55%, var(--bg-surface) 100%);
+  }
+  .blog-list-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .blog-list-card-body {
+    padding: 20px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    min-height: 0;
+  }
+  .blog-list-card-title {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 1.5vw, 18px);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin: 0;
+  }
+  .blog-list-card-meta {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--orange);
+    margin-top: auto;
+  }
+
+  .blog-card-static,
+  .form-card.blog-card-static {
+    cursor: default;
+  }
+  .blog-card-static:hover,
+  .blog-card-static:active,
+  .form-card.blog-card-static:hover,
+  .form-card.blog-card-static:active {
+    transform: none !important;
+    border: 1px solid #EEDDEE !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0) !important;
+  }
+
+  .blog-news-wrap {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .blog-news-head {
+    text-align: center;
+    margin-bottom: var(--section-head-to-content);
+  }
+  .blog-news-head h2 {
+    margin-bottom: 16px;
+  }
+  .blog-news-head p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin: 0 auto;
+    max-width: 48ch;
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a href="../papex-v2.html" class="nav-logo" aria-label="PapeX">
+      <img src="PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" />
+    </a>
+
+    <div class="nav-links">
+      <a href="pos-calculator.html">POS Calculator</a>
+      <a href="#">About Us</a><!-- placeholder: link to about-us.html -->
+      <a href="../papex-v2.html#pricing">Pricing</a>
+      <a href="blog.html" class="pc-active-link" aria-current="page">Blog</a>
+    </div>
+
+    <div class="nav-right">
+      <a href="#" class="btn btn-ghost btn-sm">Log In</a>
+      <a href="#" class="btn btn-primary btn-sm">Download App</a>
+    </div>
+  </div>
+</nav>
+
+<main class="subpage-main">
+  <section>
+    <div class="blog-page-head reveal">
+      <h1>PapeX Blog</h1>
+      <p>Insights, stories, and updates from the world of digital receipts and sustainable business practices.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="blog-list-grid">
+<!-- BLOG_LISTING_START -->
+<a class="blog-list-card card reveal" href="articles/how-papex-works-turning-everyday-transactions-into-organized-financial-data.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/how-papex-works-turning-everyday-transactions-into-organized-financial-data.png" alt="Cover thumbnail: How PapeX Works: Turning Everyday Transactions Into Organized Financial Data" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">How PapeX Works: Turning Everyday Transactions Into Organized Financial Data</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d1" href="articles/automation-and-control-why-letting-go-creates-better-outcomes.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/automation-and-control-why-letting-go-creates-better-outcomes.webp" alt="Cover thumbnail: Automation and Control: Why Letting Go Creates Better Outcomes" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Automation and Control: Why Letting Go Creates Better Outcomes</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d2" href="articles/the-hidden-financial-frustrations-of-modern-spending-and-why-they-keep-adding-up.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-hidden-financial-frustrations-of-modern-spending-and-why-they-keep-adding-up.webp" alt="Cover thumbnail: The Hidden Financial Frustrations of Modern Spending (And Why They Keep Adding Up)" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Hidden Financial Frustrations of Modern Spending (And Why They Keep Adding Up)</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal" href="articles/the-tiny-slip-of-paper-creating-a-massive-waste-problem.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-tiny-slip-of-paper-creating-a-massive-waste-problem.jpg" alt="Cover thumbnail: The Tiny Slip of Paper Creating a Massive Waste Problem" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Tiny Slip of Paper Creating a Massive Waste Problem</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d1" href="articles/the-hidden-cost-of-paper-receipts-what-they-are-really-costing-us.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-hidden-cost-of-paper-receipts-what-they-are-really-costing-us.webp" alt="Cover thumbnail: The Hidden Cost of Paper Receipts: What They Are Really Costing Us" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Hidden Cost of Paper Receipts: What They Are Really Costing Us</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d2" href="articles/the-hidden-daily-annoyances-of-paper-and-email-receipts-and-why-we-deserve-better.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-hidden-daily-annoyances-of-paper-and-email-receipts-and-why-we-deserve-better.jpg" alt="Cover thumbnail: The Hidden Daily Annoyances of Paper and Email Receipts (And Why We Deserve Better)" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Hidden Daily Annoyances of Paper and Email Receipts (And Why We Deserve Better)</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal" href="articles/why-digital-receipts-haven-t-solved-the-real-problem-yet.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/why-digital-receipts-haven-t-solved-the-real-problem-yet.jpg" alt="Cover thumbnail: Why Digital Receipts Haven’t Solved the Real Problem (Yet)" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Why Digital Receipts Haven’t Solved the Real Problem (Yet)</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d1" href="articles/merchants-are-paying-for-receipts-twice-here-s-why.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/merchants-are-paying-for-receipts-twice-here-s-why.jpg" alt="Cover thumbnail: Merchants Are Paying for Receipts Twice, Here’s Why" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Merchants Are Paying for Receipts Twice, Here’s Why</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d2" href="articles/why-do-i-always-lose-receipts-when-i-need-them-most.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/why-do-i-always-lose-receipts-when-i-need-them-most.jpg" alt="Cover thumbnail: Why Do I Always Lose Receipts When I Need Them Most?" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Why Do I Always Lose Receipts When I Need Them Most?</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal" href="articles/why-pos-vendors-can-never-do-what-papex-does.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/why-pos-vendors-can-never-do-what-papex-does.jpg" alt="Cover thumbnail: Why POS Vendors Can Never Do What PapeX Does" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Why POS Vendors Can Never Do What PapeX Does</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d1" href="articles/the-next-step-in-receipts-papex-admin-accounts.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-next-step-in-receipts-papex-admin-accounts.jpg" alt="Cover thumbnail: The Next Step in Receipts: PapeX Admin Accounts" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Next Step in Receipts: PapeX Admin Accounts</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d2" href="articles/beta-testers-are-builders-too.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/beta-testers-are-builders-too.jpg" alt="Cover thumbnail: Beta Testers Are Builders Too" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Beta Testers Are Builders Too</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal" href="articles/the-receiptless-generation-what-gen-z-expects-from-shopping.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-receiptless-generation-what-gen-z-expects-from-shopping.jpg" alt="Cover thumbnail: The Receiptless Generation: What Gen Z Expects from Shopping" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Receiptless Generation: What Gen Z Expects from Shopping</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d1" href="articles/inside-the-papex-beta-the-countdown-to-going-public.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/inside-the-papex-beta-the-countdown-to-going-public.jpg" alt="Cover thumbnail: Inside the PapeX Beta: The Countdown to Going Public" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Inside the PapeX Beta: The Countdown to Going Public</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d2" href="articles/behind-the-build-how-papex-is-laying-the-groundwork-for-a-seamless-beta-launch.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/behind-the-build-how-papex-is-laying-the-groundwork-for-a-seamless-beta-launch.jpg" alt="Cover thumbnail: Behind the Build: How PapeX Is Laying the Groundwork for a Seamless Beta Launch" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Behind the Build: How PapeX Is Laying the Groundwork for a Seamless Beta Launch</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal" href="articles/the-loyalty-problem-no-one-talks-about.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-loyalty-problem-no-one-talks-about.jpg" alt="Cover thumbnail: The Loyalty Problem No One Talks About" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Loyalty Problem No One Talks About</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d1" href="articles/the-legal-side-of-receipts-proof-protection-and-why-it-still-matters.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-legal-side-of-receipts-proof-protection-and-why-it-still-matters.jpg" alt="Cover thumbnail: The Legal Side of Receipts: Proof, Protection, and Why It Still Matters" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Legal Side of Receipts: Proof, Protection, and Why It Still Matters</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d2" href="articles/the-invisible-cost-of-every-purchase-what-you-don-t-see-at-checkout.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-invisible-cost-of-every-purchase-what-you-don-t-see-at-checkout.jpg" alt="Cover thumbnail: The Invisible Cost of Every Purchase: What You Don&#x27;t See at Checkout" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Invisible Cost of Every Purchase: What You Don&#x27;t See at Checkout</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal" href="articles/how-missing-receipts-cost-everyone-money.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/how-missing-receipts-cost-everyone-money.jpg" alt="Cover thumbnail: How Missing Receipts Cost Everyone Money" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">How Missing Receipts Cost Everyone Money</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d1" href="articles/the-lost-art-of-financial-tracking.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/the-lost-art-of-financial-tracking.jpg" alt="Cover thumbnail: The Lost Art of Financial Tracking" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Lost Art of Financial Tracking</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d2" href="articles/secret-life-shopping-receipt.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/secret-life-shopping-receipt.webp" alt="Cover thumbnail: The Secret Life of Your Shopping Receipt: What Happens After You Throw It Away" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Secret Life of Your Shopping Receipt: What Happens After You Throw It Away</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal" href="articles/why-business-owners-hate-printing-receipts.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/why-business-owners-hate-printing-receipts.webp" alt="Cover thumbnail: Why Business Owners Hate Printing Receipts (And How PapeX Solves This)" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">Why Business Owners Hate Printing Receipts (And How PapeX Solves This)</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d1" href="articles/history-of-receipts.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/history-of-receipts.webp" alt="Cover thumbnail: A Brief History of Receipts: From Ancient Clay Tablets to Digital Innovation" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">A Brief History of Receipts: From Ancient Clay Tablets to Digital Innovation</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<a class="blog-list-card card reveal reveal-d2" href="articles/hidden-cost-paper-receipts.html"><div class="blog-list-card-img-wrap"><img src="blog-covers/hidden-cost-paper-receipts.webp" alt="Cover thumbnail: The Hidden Cost of Paper Receipts: Why Your Business Needs to Go Digital" width="400" height="400" loading="lazy" decoding="async" class="blog-list-card-img" /></div><div class="blog-list-card-body"><h3 class="blog-list-card-title">The Hidden Cost of Paper Receipts: Why Your Business Needs to Go Digital</h3><span class="blog-list-card-meta">Read article</span></div></a>
+<!-- BLOG_LISTING_END -->
+    </div>
+  </section>
+
+  <section>
+    <div class="blog-news-wrap">
+      <div class="blog-news-head reveal">
+        <h2>Stay Updated</h2>
+        <p>Join our community to get the latest insights on digital receipts, sustainability, and business innovation.</p>
+      </div>
+
+      <div class="form-card blog-card-static reveal reveal-d1">
+        <div class="fc-eyebrow">
+          <h3 class="fc-card-title">Newsletter</h3>
+        </div>
+        <p>We will only email when we have something worth your time.</p>
+        <form class="form-card-form" id="blog-newsletter-form" action="#" method="post">
+          <input type="email" name="email" id="blog-newsletter-email" placeholder="Your email" required autocomplete="email">
+          <button type="submit" class="btn btn-primary fc-primary">Join Our Newsletter</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-row">
+      <a href="../papex-v2.html" class="footer-logo" aria-label="PapeX">
+        <img src="PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" />
+      </a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-col footer-col--brand">
+        <p class="footer-blurb">Download the PapeX app and keep every receipt in one place. Purchases sync automatically after checkout so you never lose proof for returns, expenses, or tax time.</p>
+        <a href="../papex-v2.html#hero" class="btn-app-store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="app-dl-text">
+            <span class="app-dl-small">Download on the</span>
+            <span class="app-dl-big">App Store</span>
+          </div>
+        </a>
+      </div>
+      <nav class="footer-col footer-col--nav" aria-label="Footer">
+        <a href="pos-calculator.html">POS Calculator</a>
+        <a href="#">About Us</a><!-- placeholder: link to about-us.html -->
+        <a href="../papex-v2.html#pricing">Pricing</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+    </div>
+    <p class="footer-copy">© 2026 PapeX Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const revObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(function (el) { revObs.observe(el); });
+
+  window.addEventListener('scroll', function () {
+    var bar = document.querySelector('.site-nav');
+    if (bar) bar.style.boxShadow = window.scrollY > 20 ? '0 1px 0 rgba(0,0,0,0.06)' : 'none';
+  }, { passive: true });
+
+  var form = document.getElementById('blog-newsletter-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var input = form.querySelector('input[type="email"]');
+      if (btn) {
+        btn.textContent = 'Thanks, you are on the list';
+        btn.disabled = true;
+      }
+      if (input) input.disabled = true;
+    });
+  }
+})();
+</script>
+</body>
+</html>
