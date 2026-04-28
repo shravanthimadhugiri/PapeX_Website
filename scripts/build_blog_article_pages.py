@@ -88,13 +88,13 @@ def article_html(
 <body>
 <nav class="site-nav" aria-label="Primary">
   <div class="nav-inner">
-    <a href="../papex-v2.html" class="nav-logo" aria-label="PapeX">
+    <a href="../index.html" class="nav-logo" aria-label="PapeX">
       <img src="../PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" />
     </a>
     <div class="nav-links">
       <a href="../pos-calculator.html">POS Calculator</a>
       <a href="#">About Us</a><!-- placeholder: link to about-us.html -->
-      <a href="../papex-v2.html#pricing">Pricing</a>
+      <a href="../index.html#pricing">Pricing</a>
       <a href="../blog.html">Blog</a>
     </div>
     <div class="nav-right">
@@ -116,13 +116,13 @@ def article_html(
 
 <footer>
   <div class="footer-inner">
-    <a href="../papex-v2.html" class="footer-logo" aria-label="PapeX">
+    <a href="../index.html" class="footer-logo" aria-label="PapeX">
       <img src="../PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" />
     </a>
     <div class="footer-links" role="navigation" aria-label="Footer">
       <a href="../pos-calculator.html">POS Calculator</a>
       <a href="#">About Us</a><!-- placeholder: link to about-us.html -->
-      <a href="../papex-v2.html#pricing">Pricing</a>
+      <a href="../index.html#pricing">Pricing</a>
       <a href="../blog.html">Blog</a>
     </div>
     <div class="footer-legal-wrap">
