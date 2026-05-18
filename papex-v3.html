@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PapeX — Never Lose a Receipt Again</title>
+  <meta name="description" content="PapeX automatically captures and organizes every receipt after purchase. Free for consumers. Tax-ready exports when you need them.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="papex-v3.css">
+</head>
+<body>
+
+<header class="v3-nav" id="site-nav">
+  <div class="v3-nav__inner">
+    <a href="papex-v3.html" class="v3-nav__logo" aria-label="PapeX home">
+      <img src="PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" width="120" height="32">
+    </a>
+    <nav class="v3-nav__links v3-nav__links--desktop" aria-label="Primary">
+      <a href="#pricing">Pricing</a>
+      <a href="pos-calculator.html">POS Calculator</a>
+      <a href="blog.html">Blog</a>
+      <a href="#about">About Us</a>
+    </nav>
+    <a href="#" class="v3-nav__cta v3-nav__cta--desktop js-app-store" data-cta="nav" aria-label="Get the PapeX app">
+      Get the app
+      <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
+    </a>
+    <button type="button" class="v3-nav__toggle" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav id="nav-drawer" class="v3-nav__drawer" aria-label="Mobile" hidden>
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="pos-calculator.html">POS Calculator</a>
+    <a href="blog.html">Blog</a>
+    <a href="#about">About Us</a>
+    <a href="#business">For Business</a>
+    <a href="#cta">Contact</a>
+    <a href="#" class="btn btn--primary js-app-store" data-cta="nav-mobile">Get the app</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="v3-hero" id="top">
+    <div class="v3-hero__inner">
+      <div class="v3-hero__copy reveal">
+        <h1>Stop losing money to missing receipts.</h1>
+        <p>PapeX automatically captures and organizes every transaction after purchase, so nothing gets lost, and every deduction is accounted for.</p>
+        <div class="v3-hero__badges" aria-label="Product highlights">
+          <div class="v3-badge">
+            <span class="v3-badge__icon v3-badge__icon--live" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+            </span>
+            <span class="v3-badge__text"><strong>Live on the App Store</strong><span>Free for consumers</span></span>
+          </div>
+          <div class="v3-badge">
+            <span class="v3-badge__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12 3.84 21.85c-.5-.24-.84-.76-.84-1.35z"/><path fill="#34A853" d="M16.81 15.12 6.05 21.34l8.64-8.64z"/><path fill="#FBBC04" d="M20.16 10.81c.18.39.18.85 0 1.24l-2.03 3.52-3.51-3.51 3.51-3.51z"/><path fill="#EA4335" d="M6.05 2.66l10.76 6.22-3.09 3.09z"/></svg>
+            </span>
+            <span class="v3-badge__text"><strong>Google Play</strong><span>Coming soon</span></span>
+          </div>
+        </div>
+      </div>
+      <div class="v3-hero__stage reveal">
+        <article class="v3-float v3-float--tl" aria-hidden="true">
+          <span class="v3-float__icon">🛒</span>
+          <span class="v3-float__body"><strong>MegaStore</strong><span>Grocery · $36.25 captured</span></span>
+        </article>
+        <article class="v3-float v3-float--tr" aria-hidden="true">
+          <span class="v3-float__icon v3-float__icon--ok">✓</span>
+          <span class="v3-float__body"><strong>Receipt saved</strong><span>Tagged for tax export</span></span>
+        </article>
+        <article class="v3-float v3-float--bl" aria-hidden="true">
+          <span class="v3-float__icon">✉️</span>
+          <span class="v3-float__body"><strong>Email forwarded</strong><span>Added instantly</span></span>
+        </article>
+        <article class="v3-float v3-float--br" aria-hidden="true">
+          <span class="v3-float__icon">📄</span>
+          <span class="v3-float__body"><strong>Chipotle</strong><span>Dining · $24.79</span></span>
+        </article>
+        <img class="v3-hero__mockup-img" src="papex-v3-mockup.png" alt="Hand holding an iPhone showing the PapeX app with monthly spending and recent receipts" width="1200" height="800" loading="eager" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust -->
+  <section class="v3-trust" aria-label="Trusted by">
+    <div class="wrap">
+      <p class="v3-trust__label">Trusted by early adopters across</p>
+      <div class="v3-trust__pills">
+        <span>Retail pilots</span>
+        <span>QSR &amp; cafés</span>
+        <span>Clover ecosystem</span>
+        <span>1099 &amp; SMB finance</span>
+        <span>Bookkeeping firms</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Capture. Organize. Export.</h2>
+        <p>Three steps to never lose a receipt again. Start free today; automatic POS capture rolls out as integrations go live.</p>
+      </header>
+      <div class="v3-steps reveal">
+        <article class="v3-step">
+          <div class="v3-step__num" aria-hidden="true">1</div>
+          <h3>Capture</h3>
+          <p>Forward email receipts, scan paper, or let PapeX grab them at checkout when your store is connected.</p>
+        </article>
+        <article class="v3-step">
+          <div class="v3-step__num" aria-hidden="true">2</div>
+          <h3>Organize</h3>
+          <p>Every receipt is tagged, searchable, and sorted — no camera roll chaos or shoebox folders.</p>
+        </article>
+        <article class="v3-step">
+          <div class="v3-step__num" aria-hidden="true">3</div>
+          <h3>Export</h3>
+          <p>One click to your accountant or tax software when you need proof for deductions and reimbursements.</p>
+        </article>
+      </div>
+      <div class="v3-panels reveal">
+        <div class="v3-panel">
+          <span class="v3-panel__badge v3-panel__badge--live"><span class="dot" aria-hidden="true"></span> Available now</span>
+          <ul>
+            <li>
+              <span class="v3-panel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+              <span><strong>Forward email receipts</strong> Send to your unique PapeX address — they appear in the app instantly.</span>
+            </li>
+            <li>
+              <span class="v3-panel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg></span>
+              <span><strong>Scan paper receipts</strong> Photo or upload — we extract and categorize automatically.</span>
+            </li>
+            <li>
+              <span class="v3-panel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M16 6 12 2 8 6"/><path d="M12 2v15"/></svg></span>
+              <span><strong>Export in one click</strong> Tax-ready files for your accountant or expense platform.</span>
+            </li>
+          </ul>
+        </div>
+        <div class="v3-panel">
+          <span class="v3-panel__badge v3-panel__badge--soon">Full launch with POS</span>
+          <ul>
+            <li>
+              <span class="v3-panel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg></span>
+              <span><strong>Pay as normal</strong> Card, Apple Pay, or Google Pay at any connected store.</span>
+            </li>
+            <li>
+              <span class="v3-panel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg></span>
+              <span><strong>Instant capture</strong> The PapeX plug-in sends the receipt without lifting a finger.</span>
+            </li>
+            <li>
+              <span class="v3-panel__icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M8 16H3v5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M16 8h5V3"/></svg></span>
+              <span><strong>Always on</strong> Every future purchase at connected stores just works.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem / story -->
+  <section class="section section--alt" id="about">
+    <div class="wrap v3-story">
+      <div class="reveal">
+        <span class="eyebrow">The problem</span>
+        <h2>You're leaving money on the table. Every year.</h2>
+        <p>Tax season hits and you're piecing together a year of expenses from blurry photos, stray emails, and paper crumpled in the car. None of it is tagged, categorized, or export-ready.</p>
+        <p><strong style="color:var(--text)">It's not just messy — it's deductions you can't prove and money you leave on the table.</strong></p>
+        <a href="#" class="btn btn--primary js-app-store" data-cta="story" style="margin-top:24px">Download PapeX free</a>
+      </div>
+      <div class="v3-timeline reveal">
+        <div class="v3-timeline__item">
+          <h4>At checkout: &ldquo;I'll just take a photo&rdquo;</h4>
+          <p>It disappears into a gallery of thousands of photos. You feel like you've handled it.</p>
+        </div>
+        <div class="v3-timeline__item">
+          <h4>End of month: &ldquo;I'll deal with it later&rdquo;</h4>
+          <p>Email forwards and paper in your pocket. The folder system never happens.</p>
+        </div>
+        <div class="v3-timeline__item">
+          <h4>Tax season: &ldquo;Where is everything?&rdquo;</h4>
+          <p>Hours reconstructing what you can. Deductions you can't prove — real money gone.</p>
+        </div>
+        <div class="v3-timeline__item v3-timeline__item--highlight">
+          <h4>With PapeX, it just works</h4>
+          <p>Every receipt captured, tagged, and organized the moment it's created. One click exports everything.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for (consumers) -->
+  <section class="section" id="for">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="eyebrow">Who it's built for</span>
+        <h2>Built for people who need their receipts.</h2>
+        <p>If receipts are a legal obligation — not just a convenience — PapeX is made for you.</p>
+      </header>
+      <div class="v3-grid reveal">
+        <article class="v3-card">
+          <span class="v3-card__pill">Self-employed</span>
+          <h3>1099 contractors</h3>
+          <p>Every expense is a potential deduction. Stop leaving money on the table.</p>
+          <ul>
+            <li>Get reimbursed with less effort</li>
+            <li>Never forget a receipt</li>
+            <li>Share expenses in one click</li>
+          </ul>
+        </article>
+        <article class="v3-card">
+          <span class="v3-card__pill">Small business</span>
+          <h3>SMB owners</h3>
+          <p>Every employee's expense, automatically organized.</p>
+          <ul>
+            <li>Multi-user expense tracking</li>
+            <li>Export to accounting platforms</li>
+            <li>50% less time on monthly accounting</li>
+          </ul>
+        </article>
+        <article class="v3-card">
+          <span class="v3-card__pill">Enterprise</span>
+          <h3>Corporate cardholders</h3>
+          <p>Submit expenses without the Sunday night receipt hunt.</p>
+          <ul>
+            <li>One-click receipt submission</li>
+            <li>Automatic categorization</li>
+            <li>No more manual entries</li>
+          </ul>
+        </article>
+        <article class="v3-card">
+          <span class="v3-card__pill">Accounting</span>
+          <h3>Bookkeepers</h3>
+          <p>Client receipts collected and exportable — no chasing or scanning.</p>
+          <ul>
+            <li>Clean client data</li>
+            <li>Bulk export</li>
+            <li>Stack integration</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section section--alt" id="pricing">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="eyebrow">Pricing</span>
+        <h2>Simple plans. Clear value.</h2>
+        <p>Start free. Upgrade when you need exports, teams, or deeper integrations.</p>
+      </header>
+      <div class="v3-pricing reveal">
+        <article class="v3-price">
+          <h3>Free</h3>
+          <p class="v3-price__amount">$0</p>
+          <p class="v3-price__period">per month</p>
+          <ul>
+            <li>Unlimited receipt capture</li>
+            <li>Email and scan ingestion</li>
+            <li>Organization and search</li>
+          </ul>
+          <a href="#" class="btn btn--primary js-app-store" data-cta="pricing-free">Download the app</a>
+        </article>
+        <article class="v3-price v3-price--featured">
+          <span class="v3-price__badge">Most popular</span>
+          <h3>Plus</h3>
+          <p class="v3-price__amount">$9.99</p>
+          <p class="v3-price__period">per month</p>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Tax-ready exports</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#cta" class="btn btn--primary">Get Plus</a>
+        </article>
+        <article class="v3-price">
+          <h3>Teams</h3>
+          <p class="v3-price__amount">Custom</p>
+          <p class="v3-price__period">pricing</p>
+          <ul>
+            <li>Multi-seat administration</li>
+            <li>Accounting integrations</li>
+            <li>Dedicated onboarding</li>
+          </ul>
+          <a href="#cta" class="btn btn--ghost">Talk to sales</a>
+        </article>
+      </div>
+      <div class="v3-pricing-faq reveal">
+        <h3>Common pricing questions</h3>
+        <div class="v3-faq" data-faq>
+          <div class="v3-faq__item">
+            <button type="button" class="v3-faq__q" aria-expanded="false">Is the app really free for consumers?</button>
+            <div class="v3-faq__a" hidden><p>Yes. Core capture and organization are free forever. You only pay for Plus when you want tax-ready exports and priority support.</p></div>
+          </div>
+          <div class="v3-faq__item">
+            <button type="button" class="v3-faq__q" aria-expanded="false">When do I need Plus?</button>
+            <div class="v3-faq__a" hidden><p>When you want one-click exports to your accountant or tax software, or if you want priority help during tax season.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business (merchants, POS, investors) -->
+  <section class="section" id="business">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="eyebrow">For business</span>
+        <h2>Merchants, platforms, and partners.</h2>
+        <p>PapeX is infrastructure — not just an app. Explore how we work with your side of the receipt.</p>
+      </header>
+      <div class="v3-tabs reveal" role="tablist" aria-label="Business audiences">
+        <button type="button" class="v3-tab is-active" role="tab" aria-selected="true" data-tab="merchants">Merchants</button>
+        <button type="button" class="v3-tab" role="tab" aria-selected="false" data-tab="vendors">POS vendors</button>
+        <button type="button" class="v3-tab" role="tab" aria-selected="false" data-tab="investors">Investors</button>
+      </div>
+
+      <div id="tab-merchants" class="v3-tabpanel is-active reveal" role="tabpanel">
+        <div>
+          <h3>Cut costs. Speed up checkout.</h3>
+          <p>PapeX replaces paper receipt costs with a cheaper digital alternative. No new hardware, no staff retraining.</p>
+          <ul style="margin-top:16px; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:8px; font-size:0.9375rem; color:var(--text-secondary)">
+            <li>✓ Reduce receipt costs by 50–80%</li>
+            <li>✓ Faster checkout — no printing wait</li>
+            <li>✓ Digital coupons with real-time tracking</li>
+          </ul>
+          <a href="#cta" class="btn btn--primary" style="margin-top:20px">Partner with us</a>
+        </div>
+        <div class="v3-stat-grid">
+          <div class="v3-stat"><div class="v3-stat__label">Paper cost</div><div class="v3-stat__val">$0.05</div></div>
+          <div class="v3-stat"><div class="v3-stat__label">PapeX cost</div><div class="v3-stat__val v3-stat__val--green">$0.01</div></div>
+          <div class="v3-stat"><div class="v3-stat__label">Savings</div><div class="v3-stat__val v3-stat__val--orange">80%</div></div>
+          <div class="v3-stat"><div class="v3-stat__label">Setup</div><div class="v3-stat__val">Zero</div></div>
+        </div>
+      </div>
+
+      <div id="tab-vendors" class="v3-tabpanel reveal" role="tabpanel" hidden>
+        <div>
+          <h3>Make your platform more valuable, overnight.</h3>
+          <p>REST API integration. No hardware changes. A new revenue stream from day one.</p>
+          <div class="v3-chips">
+            <span class="v3-chip v3-chip--live">Clover (live)</span>
+            <span class="v3-chip">Square (in progress)</span>
+            <span class="v3-chip">Toast (in progress)</span>
+            <span class="v3-chip">Lightspeed</span>
+          </div>
+          <a href="#cta" class="btn btn--primary" style="margin-top:20px">Let's talk integration</a>
+        </div>
+        <div class="v3-stat-grid">
+          <div class="v3-stat"><div class="v3-stat__label">Merchant paper cost</div><div class="v3-stat__val">$0.05/ea</div></div>
+          <div class="v3-stat"><div class="v3-stat__label">PapeX to merchant</div><div class="v3-stat__val v3-stat__val--green">$0.01/ea</div></div>
+        </div>
+      </div>
+
+      <div id="tab-investors" class="v3-tabpanel reveal" role="tabpanel" hidden>
+        <div>
+          <h3>A $5.6B market nobody has cracked yet.</h3>
+          <p>Raising a $3.1M seed round. Working product, real users, no dominant competitor.</p>
+          <p style="margin-top:12px; font-size:0.875rem">Pay-per-receipt · B2B subscriptions · Anonymized data — <strong style="color:var(--text)">$5.64B+ TAM</strong></p>
+          <a href="#cta" class="btn btn--primary" style="margin-top:20px">Download one-pager</a>
+        </div>
+        <div>
+          <div class="v3-stat-grid">
+            <div class="v3-stat"><div class="v3-stat__label">Year 1 revenue</div><div class="v3-stat__val">$570K</div></div>
+            <div class="v3-stat"><div class="v3-stat__label">Break-even</div><div class="v3-stat__val">Q3 Yr3</div></div>
+            <div class="v3-stat"><div class="v3-stat__label">Year 5 revenue</div><div class="v3-stat__val v3-stat__val--orange">~$20M</div></div>
+            <div class="v3-stat"><div class="v3-stat__label">Gross margin</div><div class="v3-stat__val v3-stat__val--green">80%</div></div>
+          </div>
+          <div class="v3-ask">
+            <p style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; opacity:0.85; margin-bottom:4px">Seed round open</p>
+            <p class="v3-ask__amt">$3.1M</p>
+            <p class="v3-ask__sub">for 4% equity in PapeX Inc.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Competition (simplified mobile + table desktop) -->
+  <section class="section section--alt" id="compare">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="eyebrow">Why PapeX</span>
+        <h2>The competition has half an answer.</h2>
+        <p>Every existing solution stops when a receipt gets printed. PapeX covers payment through returns, expense tracking, and tax management.</p>
+      </header>
+      <div class="v3-compare v3-compare--mobile reveal">
+        <article class="v3-card v3-compare__card--papex">
+          <h4>PapeX</h4>
+          <p>Fully automatic delivery, consumer app, financial integrations, multi-POS, streamlined experience.</p>
+        </article>
+        <article class="v3-card">
+          <h4>ReceiptHero</h4>
+          <p>Partial automation. No financial integration or streamlined consumer experience.</p>
+        </article>
+        <article class="v3-card">
+          <h4>SAP Concur</h4>
+          <p>Enterprise expense tool — manual scan, no consumer app or multi-POS.</p>
+        </article>
+      </div>
+      <div class="v3-table-wrap v3-table-desktop reveal">
+        <table class="v3-table">
+          <thead>
+            <tr>
+              <th scope="col">Company</th>
+              <th scope="col">Auto delivery</th>
+              <th scope="col">Consumer app</th>
+              <th scope="col">Financial integration</th>
+              <th scope="col">Multi-POS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-papex">
+              <td>PapeX</td>
+              <td><span class="sr-yes">Fully automatic</span></td>
+              <td><span class="sr-yes">Yes</span></td>
+              <td><span class="sr-yes">Yes</span></td>
+              <td><span class="sr-yes">Yes</span></td>
+            </tr>
+            <tr>
+              <td>ReceiptHero</td>
+              <td><span class="sr-partial">Partial</span></td>
+              <td><span class="sr-yes">Yes</span></td>
+              <td><span class="sr-no">No</span></td>
+              <td><span class="sr-partial">Limited</span></td>
+            </tr>
+            <tr>
+              <td>SAP Concur</td>
+              <td><span class="sr-no">Manual scan</span></td>
+              <td><span class="sr-no">No</span></td>
+              <td><span class="sr-yes">Yes</span></td>
+              <td><span class="sr-no">No</span></td>
+            </tr>
+            <tr>
+              <td>Fetch Rewards</td>
+              <td><span class="sr-no">Manual scan</span></td>
+              <td><span class="sr-yes">Yes</span></td>
+              <td><span class="sr-no">No</span></td>
+              <td><span class="sr-no">No</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions we hear a lot.</h2>
+      </header>
+      <div class="v3-faq reveal" data-faq>
+        <div class="v3-faq__item">
+          <button type="button" class="v3-faq__q" aria-expanded="false">Is my financial data secure?</button>
+          <div class="v3-faq__a" hidden><p>Yes. Encryption in transit and at rest, strict access controls, and one-way tokenization where card data never sits reversibly in PapeX.</p></div>
+        </div>
+        <div class="v3-faq__item">
+          <button type="button" class="v3-faq__q" aria-expanded="false">Do I still need paper receipts?</button>
+          <div class="v3-faq__a" hidden><p>Where regulations allow digital records, PapeX keeps compliant copies. If paper is required, scan it in seconds and keep the digital original organized.</p></div>
+        </div>
+        <div class="v3-faq__item">
+          <button type="button" class="v3-faq__q" aria-expanded="false">Which POS systems work today?</button>
+          <div class="v3-faq__a" hidden><p>Clover is live. Square and Toast are in progress. Merchants and vendors can reach out from Get Started to plan an integration.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="section section--alt" id="blog">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="eyebrow">From the blog</span>
+        <h2>Receipts, finance, and product notes.</h2>
+      </header>
+      <div class="v3-blog reveal">
+        <a class="v3-blog__card" href="articles/how-papex-works-turning-everyday-transactions-into-organized-financial-data.html">
+          <img class="v3-blog__img" src="blog-covers/how-papex-works-turning-everyday-transactions-into-organized-financial-data.png" alt="" width="400" height="400" loading="lazy">
+          <div class="v3-blog__body">
+            <h3 class="v3-blog__title">How PapeX Works: Turning Everyday Transactions Into Organized Financial Data</h3>
+            <span class="v3-blog__meta">Read article</span>
+          </div>
+        </a>
+        <a class="v3-blog__card" href="articles/automation-and-control-why-letting-go-creates-better-outcomes.html">
+          <img class="v3-blog__img" src="blog-covers/automation-and-control-why-letting-go-creates-better-outcomes.webp" alt="" width="400" height="400" loading="lazy">
+          <div class="v3-blog__body">
+            <h3 class="v3-blog__title">Automation and Control: Why Letting Go Creates Better Outcomes</h3>
+            <span class="v3-blog__meta">Read article</span>
+          </div>
+        </a>
+        <a class="v3-blog__card" href="articles/the-hidden-financial-frustrations-of-modern-spending-and-why-they-keep-adding-up.html">
+          <img class="v3-blog__img" src="blog-covers/the-hidden-financial-frustrations-of-modern-spending-and-why-they-keep-adding-up.webp" alt="" width="400" height="400" loading="lazy">
+          <div class="v3-blog__body">
+            <h3 class="v3-blog__title">The Hidden Financial Frustrations of Modern Spending</h3>
+            <span class="v3-blog__meta">Read article</span>
+          </div>
+        </a>
+      </div>
+      <p style="text-align:center; margin-top:32px" class="reveal">
+        <a href="blog.html" class="btn btn--ghost">View all posts</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="cta">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <span class="eyebrow">Get started</span>
+        <h2>Be first. Be paperless.</h2>
+        <p>Download the app, start a partnership, or request investor materials.</p>
+      </header>
+      <div class="v3-forms reveal">
+        <div class="v3-form-card">
+          <h3>App users</h3>
+          <p>Download PapeX and start organizing receipts today.</p>
+          <a href="#" class="btn btn--primary js-app-store" data-cta="form-app">Download on App Store</a>
+          <form style="margin-top:16px" onsubmit="return handleForm(event,'consumer')">
+            <label style="font-size:0.75rem;color:var(--text-muted)">Android waitlist</label>
+            <input type="email" name="email" placeholder="Email for Android waitlist" required>
+            <button type="submit" class="btn btn--ghost">Notify me</button>
+          </form>
+        </div>
+        <div class="v3-form-card">
+          <h3>POS vendors</h3>
+          <p>No commitment — start with a conversation.</p>
+          <form onsubmit="return handleForm(event,'vendor')">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="company" placeholder="Company / platform" required>
+            <input type="email" name="email" placeholder="Work email" required>
+            <textarea name="message" placeholder="Tell us about your platform…" rows="2"></textarea>
+            <button type="submit" class="btn btn--primary">Let's talk integration</button>
+          </form>
+        </div>
+        <div class="v3-form-card">
+          <h3>Investors</h3>
+          <p>Request materials or introduce your fund.</p>
+          <form onsubmit="return handleForm(event,'investor')">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="text" name="firm" placeholder="Fund or firm">
+            <input type="email" name="email" placeholder="Email" required>
+            <select name="range">
+              <option value="">Investment range</option>
+              <option>Under $250K</option>
+              <option>$250K – $500K</option>
+              <option>$500K – $1M</option>
+              <option>$1M+</option>
+            </select>
+            <button type="submit" class="btn btn--primary">Download one-pager</button>
+          </form>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:28px; font-size:0.875rem; color:var(--text-muted)">
+        Or email <a href="mailto:nico@papex.com" style="color:var(--orange); text-decoration:none">nico@papex.com</a> · Dallas, TX
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="v3-footer">
+  <div class="wrap">
+    <div class="v3-footer__grid">
+      <div>
+        <a href="papex-v3.html" aria-label="PapeX">
+          <img src="PapeX%20Logos/primary%20orange%20light.svg" alt="PapeX" height="32">
+        </a>
+        <p class="v3-footer__blurb">Keep every receipt in one place. Purchases sync after checkout so you never lose proof for returns, expenses, or tax time.</p>
+        <a href="#" class="btn btn--primary js-app-store" data-cta="footer">Get the app</a>
+      </div>
+      <nav class="v3-footer__nav" aria-label="Footer">
+        <a href="#pricing">Pricing</a>
+        <a href="pos-calculator.html">POS Calculator</a>
+        <a href="blog.html">Blog</a>
+        <a href="#about">About Us</a>
+    <a href="#business">For Business</a>
+        <a href="#cta">Contact</a>
+      </nav>
+    </div>
+    <div class="v3-footer__copy">
+      <span>© 2026 PapeX Inc. All rights reserved.</span>
+      <span class="v3-footer__investor">Seed round open · <a href="#business" data-tab-jump="investors">Investor info</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="v3-sticky-cta" aria-hidden="false">
+  <a href="#" class="btn btn--primary js-app-store" data-cta="sticky">Get the app — free</a>
+</div>
+
+<script>
+/* Replace with your App Store URL when ready */
+const PAPEX_APP_STORE_URL = '';
+
+document.querySelectorAll('.js-app-store').forEach(function (link) {
+  link.addEventListener('click', function (e) {
+    if (PAPEX_APP_STORE_URL) return;
+    e.preventDefault();
+    document.getElementById('cta').scrollIntoView({ behavior: 'smooth' });
+  });
+  if (PAPEX_APP_STORE_URL) link.href = PAPEX_APP_STORE_URL;
+});
+
+/* Mobile nav */
+(function () {
+  var toggle = document.querySelector('.v3-nav__toggle');
+  var drawer = document.getElementById('nav-drawer');
+  if (!toggle || !drawer) return;
+  toggle.addEventListener('click', function () {
+    var open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+    drawer.hidden = open;
+    drawer.classList.toggle('is-open', !open);
+    document.body.classList.toggle('menu-open', !open);
+  });
+  drawer.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      toggle.setAttribute('aria-expanded', 'false');
+      drawer.hidden = true;
+      drawer.classList.remove('is-open');
+      document.body.classList.remove('menu-open');
+    });
+  });
+})();
+
+/* Nav scroll shadow */
+window.addEventListener('scroll', function () {
+  var nav = document.getElementById('site-nav');
+  if (nav) nav.classList.toggle('is-scrolled', window.scrollY > 8);
+}, { passive: true });
+
+/* Tabs */
+document.querySelectorAll('.v3-tab').forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    var name = tab.getAttribute('data-tab');
+    document.querySelectorAll('.v3-tab').forEach(function (t) {
+      t.classList.toggle('is-active', t === tab);
+      t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+    });
+    document.querySelectorAll('.v3-tabpanel').forEach(function (p) {
+      var on = p.id === 'tab-' + name;
+      p.classList.toggle('is-active', on);
+      p.hidden = !on;
+    });
+  });
+});
+
+document.querySelector('[data-tab-jump="investors"]')?.addEventListener('click', function (e) {
+  e.preventDefault();
+  document.getElementById('business').scrollIntoView({ behavior: 'smooth' });
+  document.querySelector('.v3-tab[data-tab="investors"]')?.click();
+});
+
+/* FAQ */
+document.querySelectorAll('[data-faq]').forEach(function (root) {
+  root.querySelectorAll('.v3-faq__q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.v3-faq__item');
+      var panel = item && item.querySelector('.v3-faq__a');
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      root.querySelectorAll('.v3-faq__q').forEach(function (b) {
+        b.setAttribute('aria-expanded', 'false');
+        var p = b.closest('.v3-faq__item')?.querySelector('.v3-faq__a');
+        if (p) p.hidden = true;
+      });
+      if (!open && panel) {
+        btn.setAttribute('aria-expanded', 'true');
+        panel.hidden = false;
+      }
+    });
+  });
+});
+
+/* Reveal */
+var revObs = new IntersectionObserver(function (entries) {
+  entries.forEach(function (e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('is-visible');
+      revObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(function (el) { revObs.observe(el); });
+
+/* Forms */
+function handleForm(e, type) {
+  e.preventDefault();
+  var btn = e.target.querySelector('button[type=submit]');
+  var msgs = { consumer: '✓ Added to waitlist', vendor: '✓ Message received', investor: '✓ We\'ll be in touch' };
+  if (btn) {
+    btn.textContent = msgs[type] || '✓ Sent';
+    btn.disabled = true;
+  }
+  e.target.querySelectorAll('input,select,textarea').forEach(function (el) { el.disabled = true; });
+  return false;
+}
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+  a.addEventListener('click', function (e) {
+    var id = a.getAttribute('href').slice(1);
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>

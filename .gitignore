@@ -10,3 +10,6 @@ venv/
 
 # OS
 .DS_Store
+
+# Local Cursor MCP (may contain Lazyweb bearer tokens)
+.cursor/mcp.json
