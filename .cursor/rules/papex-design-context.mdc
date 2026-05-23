@@ -1,0 +1,53 @@
+---
+description: PapeX product vision, UX principles, and design review checklist for UI work
+globs: "{**/*.html,**/*.css,**/design*.md,**/papex*.md}"
+alwaysApply: false
+---
+
+# PapeX Design Context
+
+Before designing or editing any PapeX screen, flow, or webpage, read `design-context-framework.md`. For v3 marketing tokens and layout, also read `design-system-v2.md`.
+
+## North star
+
+**Make post-purchase financial management feel effortless.**
+
+PapeX is not receipt storage — it is peace of mind after payment. Users should feel organized, in control, relieved, and trusting. Never complicated, corporate, cluttered, or spreadsheet-like.
+
+## Primary users
+
+1. **1099 / self-employed** — tax-ready receipts, fast search, exports, mobile, zero extra work
+2. **Families** — shared visibility, bill splitting, simple collaboration
+3. **Everyday consumers** — returns, warranties, no paper clutter
+
+Secondary: POS vendors (modern, integration-ready) and investors (maturity, clear systems).
+
+## UI principles
+
+- **Simplicity first** — minimal layouts, strong spacing, one clear primary action, obvious hierarchy
+- **Speed** — large touch targets, minimal typing, search-first, scannable lists
+- **Calm fintech** — Brex/Ramp/Mercury/Stripe feel: light surfaces, clean type, rounded cards, subtle shadows
+- **Organization** — always clear what receipt, where it lives, what actions exist
+
+## Before generating UI, state
+
+1. Feature context (what screen is this?)
+2. User context (who, why, mobile?)
+3. Emotional direction (calm, organized, fast)
+4. UX priorities (top 3)
+5. Design system reference (`design-system-v2.md` for marketing site)
+6. Constraints (a11y, one-handed, low onboarding friction)
+
+## Review checklist (3-second test)
+
+- Purpose obvious immediately?
+- Anything removable?
+- Reduces friction vs adds work?
+- Why would users return?
+- Connected to Payment → Receipt → Organization → Sharing → Taxes → Returns?
+
+## Marketing vs in-app
+
+- **Marketing site (v3):** white canvas, Flighty-inspired hero — see `design-system-v2.md`
+- **In-app UI:** dark mode in mockup; calm fintech patterns above
+- Both must feel effortless and trustworthy per this framework
