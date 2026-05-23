@@ -50,38 +50,18 @@
       <div class="v3-hero__copy reveal">
         <h1>Stop losing money to missing receipts.</h1>
         <p>PapeX automatically captures and organizes every transaction after purchase, so nothing gets lost, and every deduction is accounted for.</p>
-        <div class="v3-hero__badges" aria-label="Product highlights">
-          <div class="v3-badge">
-            <span class="v3-badge__icon v3-badge__icon--live" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
-            </span>
-            <span class="v3-badge__text"><strong>Live on the App Store</strong><span>Free for consumers</span></span>
-          </div>
-          <div class="v3-badge">
-            <span class="v3-badge__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12 3.84 21.85c-.5-.24-.84-.76-.84-1.35z"/><path fill="#34A853" d="M16.81 15.12 6.05 21.34l8.64-8.64z"/><path fill="#FBBC04" d="M20.16 10.81c.18.39.18.85 0 1.24l-2.03 3.52-3.51-3.51 3.51-3.51z"/><path fill="#EA4335" d="M6.05 2.66l10.76 6.22-3.09 3.09z"/></svg>
-            </span>
-            <span class="v3-badge__text"><strong>Google Play</strong><span>Coming soon</span></span>
+        <div class="v3-hero__ctas" aria-label="Primary actions">
+          <a href="#" class="btn btn--primary js-app-store" data-cta="hero" aria-label="Get the PapeX app">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:18px;height:18px;stroke:currentColor;fill:none;"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
+            Get the app
+          </a>
+          <div class="btn btn--ghost" aria-hidden="true">
+            <span style="font-size:0.6875rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Coming soon to</span>
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px" aria-hidden="true"><path fill="#4285F4" d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12 3.84 21.85c-.5-.24-.84-.76-.84-1.35z"/><path fill="#34A853" d="M16.81 15.12 6.05 21.34l8.64-8.64z"/><path fill="#FBBC04" d="M20.16 10.81c.18.39.18.85 0 1.24l-2.03 3.52-3.51-3.51 3.51-3.51z"/><path fill="#EA4335" d="M6.05 2.66l10.76 6.22-3.09 3.09z"/></svg>
           </div>
         </div>
       </div>
       <div class="v3-hero__stage reveal">
-        <article class="v3-float v3-float--tl" aria-hidden="true">
-          <span class="v3-float__icon">🛒</span>
-          <span class="v3-float__body"><strong>MegaStore</strong><span>Grocery · $36.25 captured</span></span>
-        </article>
-        <article class="v3-float v3-float--tr" aria-hidden="true">
-          <span class="v3-float__icon v3-float__icon--ok">✓</span>
-          <span class="v3-float__body"><strong>Receipt saved</strong><span>Tagged for tax export</span></span>
-        </article>
-        <article class="v3-float v3-float--bl" aria-hidden="true">
-          <span class="v3-float__icon">✉️</span>
-          <span class="v3-float__body"><strong>Email forwarded</strong><span>Added instantly</span></span>
-        </article>
-        <article class="v3-float v3-float--br" aria-hidden="true">
-          <span class="v3-float__icon">📄</span>
-          <span class="v3-float__body"><strong>Chipotle</strong><span>Dining · $24.79</span></span>
-        </article>
         <img class="v3-hero__mockup-img" src="papex-v3-mockup.png" alt="Hand holding an iPhone showing the PapeX app with monthly spending and recent receipts" width="1200" height="800" loading="eager" decoding="async">
       </div>
     </div>
@@ -256,11 +236,22 @@
         <span class="eyebrow">Pricing</span>
         <h2>Simple plans. Clear value.</h2>
         <p>Start free. Upgrade when you need exports, teams, or deeper integrations.</p>
+        
+        <div class="v3-pricing-toggle" style="margin-top:32px; display:flex; align-items:center; justify-content:center; gap:16px;">
+          <span class="v3-toggle-label is-active" id="label-monthly" style="font-weight:600; color:var(--text); transition:color 0.2s">Monthly</span>
+          <button type="button" class="v3-toggle-switch" role="switch" aria-checked="false" id="pricing-switch" style="width:48px; height:26px; background:#E2E8F0; border-radius:999px; border:none; position:relative; cursor:pointer; transition:background 0.2s">
+            <span class="v3-toggle-knob" style="display:block; width:20px; height:20px; background:#fff; border-radius:50%; position:absolute; top:3px; left:3px; box-shadow:0 1px 3px rgba(0,0,0,0.1); transition:transform 0.2s cubic-bezier(0.4, 0.0, 0.2, 1)"></span>
+          </button>
+          <span class="v3-toggle-label" id="label-annual" style="font-weight:400; color:var(--text-muted); transition:color 0.2s; position:relative;">
+            Annually
+            <span class="v3-toggle-badge" style="position:absolute; top:-12px; right:-70px; font-size:0.625rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; background:var(--green); color:#fff; padding:2px 6px; border-radius:4px; white-space:nowrap;">Save 20%</span>
+          </span>
+        </div>
       </header>
       <div class="v3-pricing reveal">
         <article class="v3-price">
           <h3>Free</h3>
-          <p class="v3-price__amount">$0</p>
+          <p class="v3-price__amount" data-monthly="$0" data-annual="$0">$0</p>
           <p class="v3-price__period">per month</p>
           <ul>
             <li>Unlimited receipt capture</li>
@@ -272,7 +263,7 @@
         <article class="v3-price v3-price--featured">
           <span class="v3-price__badge">Most popular</span>
           <h3>Plus</h3>
-          <p class="v3-price__amount">$9.99</p>
+          <p class="v3-price__amount" data-monthly="$9.99" data-annual="$7.99">$9.99</p>
           <p class="v3-price__period">per month</p>
           <ul>
             <li>Everything in Free</li>
@@ -283,7 +274,7 @@
         </article>
         <article class="v3-price">
           <h3>Teams</h3>
-          <p class="v3-price__amount">Custom</p>
+          <p class="v3-price__amount" data-monthly="Custom" data-annual="Custom">Custom</p>
           <p class="v3-price__period">pricing</p>
           <ul>
             <li>Multi-seat administration</li>
@@ -609,6 +600,43 @@ document.querySelectorAll('.js-app-store').forEach(function (link) {
   });
   if (PAPEX_APP_STORE_URL) link.href = PAPEX_APP_STORE_URL;
 });
+
+/* Pricing toggle */
+(function() {
+  const switchBtn = document.getElementById('pricing-switch');
+  const labelMonthly = document.getElementById('label-monthly');
+  const labelAnnual = document.getElementById('label-annual');
+  const amounts = document.querySelectorAll('.v3-price__amount');
+
+  if (switchBtn) {
+    switchBtn.addEventListener('click', () => {
+      const isAnnual = switchBtn.getAttribute('aria-checked') === 'true';
+      const setToAnnual = !isAnnual;
+      
+      switchBtn.setAttribute('aria-checked', setToAnnual ? 'true' : 'false');
+      
+      if (setToAnnual) {
+        switchBtn.style.background = 'var(--orange)';
+        switchBtn.querySelector('.v3-toggle-knob').style.transform = 'translateX(22px)';
+        labelMonthly.style.fontWeight = '400';
+        labelMonthly.style.color = 'var(--text-muted)';
+        labelAnnual.style.fontWeight = '600';
+        labelAnnual.style.color = 'var(--text)';
+      } else {
+        switchBtn.style.background = '#E2E8F0';
+        switchBtn.querySelector('.v3-toggle-knob').style.transform = 'translateX(0)';
+        labelMonthly.style.fontWeight = '600';
+        labelMonthly.style.color = 'var(--text)';
+        labelAnnual.style.fontWeight = '400';
+        labelAnnual.style.color = 'var(--text-muted)';
+      }
+      
+      amounts.forEach(el => {
+        el.textContent = setToAnnual ? el.getAttribute('data-annual') : el.getAttribute('data-monthly');
+      });
+    });
+  }
+})();
 
 /* Mobile nav */
 (function () {
